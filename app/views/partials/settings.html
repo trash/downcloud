@@ -1,5 +1,3 @@
-<div ng-include="'partials/navbar.html'"></div>
-
 <div class="row">
 	<div class="col-sm-12">
 		<h1>Change Password</h1>
@@ -7,24 +5,22 @@
 	<div class="col-sm-12">
 		<form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 			
+			<h4>Username: {{ currentUser.username }}</h4>
+
 			<div class="form-group">
 				<label>Current Password</label>
 
-				<input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-							 mongoose-error/>    
+				<input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error/>    
 				<p class="help-block" ng-show="form.password.$error.mongoose">
-						{{ errors.other }}
+					{{ errors.other }}
 				</p>
 			</div>
 
 			<div class="form-group">
 				<label>New Password</label>
 
-				<input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" 
-							 ng-minlength="3"
-							 required/>
-				<p class="help-block"
-					 ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+				<input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" ng-minlength="3" required/>
+				<p class="help-block" ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
 					Password must be at least 3 characters.
 				</p>
 			</div>

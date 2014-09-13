@@ -12,7 +12,8 @@ angular.module('findieApp')
 			Auth.createUser({
 				name: $scope.user.name,
 				email: $scope.user.email,
-				password: $scope.user.password
+				password: $scope.user.password,
+				username: $scope.user.username
 			})
 			.then( function() {
 				// Account created, redirect to home
