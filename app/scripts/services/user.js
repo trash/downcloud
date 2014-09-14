@@ -6,6 +6,11 @@ angular.module('findieApp')
 	var usersPath = '/api/users/';
 	var userSession = $resource('/api/session/');
 
+	/**
+	 * Update the current user on the rootscope
+	 * 
+	 * @param {Object} user User object. This is a subset of the model
+	 */
 	var updateUser = function (user) {
 		$rootScope.currentUser = user;
 	};

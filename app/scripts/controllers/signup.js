@@ -5,7 +5,7 @@ angular.module('findieApp')
 	$scope.user = {};
 	$scope.errors = {};
 
-	$scope.register = function(form) {
+	$scope.register = function (form) {
 		$scope.submitted = true;
 
 		if (form.$valid) {
