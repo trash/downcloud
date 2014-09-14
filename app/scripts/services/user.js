@@ -1,22 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-// .factory('User', function ($resource) {
-// 	return $resource('/api/users/:id', {
-// 		id: '@id'
-// 	}, { //parameters default
-// 		update: {
-// 			method: 'PUT',
-// 			params: {}
-// 		},
-// 		get: {
-// 			method: 'GET',
-// 			params: {
-// 				id:'me'
-// 			}
-// 		}
-// 	});
-// })
+
 .service('User', ['$http', '$rootScope', '$resource', function ($http, $rootScope, $resource) {
 	var usersPath = '/api/users/';
 	var userSession = $resource('/api/session/');
@@ -38,20 +23,44 @@ angular.module('findieApp')
 		}).$promise;
 	};
 
+	/**
+	 * Logs the user out
+	 * 
+	 * @return {Promise} Promise resolved upon response from server
+	 */
 	this.logout = function () {
 		return userSession.delete(function () {
 			$rootScope.currentUser = null;
 		}).$promise;
 	};
 
+	/**
+	 * Sends a request to create a new user
+	 * 
+	 * @param {Object} user The user data object
+	 * 
+	 * @return {Promise} Promise from response
+	 */
 	this.create = function (user) {
 		return $http.post(usersPath, user);
 	};
 
+	/**
+	 * Sends a request to patch data on the user object
+	 * Right now this is only called by the update password method
+	 * 
+	 * @param {Object} userData Object containing the fields on the user model to update
+	 * @return {Promise} Promise from the server response
+	 */
 	this.update = function (userData) {
-		return $http.put(usersPath, userData);
+		return $http.patch(usersPath, userData);
 	};
 
+	/**
+	 * Gets the current user
+	 * 
+	 * @return {Promise} Promise that resolves with the user
+	 */
 	this.get = function () {
 		return $http.get(usersPath + 'me');
 	};
