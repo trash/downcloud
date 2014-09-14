@@ -6,6 +6,10 @@ angular.module('findieApp')
 	var usersPath = '/api/users/';
 	var userSession = $resource('/api/session/');
 
+	var updateUser = function (user) {
+		$rootScope.currentUser = user;
+	};
+
 	/**
 	 * Logs the user into the session service
 	 *
@@ -19,7 +23,7 @@ angular.module('findieApp')
 	 */
 	this.login = function (credentials) {
 		return userSession.save(credentials, function (user) {
-			$rootScope.currentUser = user;
+			updateUser(user);
 		}).$promise;
 	};
 
@@ -42,7 +46,9 @@ angular.module('findieApp')
 	 * @return {Promise} Promise from response
 	 */
 	this.create = function (user) {
-		return $http.post(usersPath, user);
+		return $http.post(usersPath, user).then(function (response) {
+			updateUser(response.data);
+		});
 	};
 
 	/**
