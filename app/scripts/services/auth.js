@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-.factory('Auth', ['$location', '$rootScope', 'Session', 'User', '$cookieStore',
+.service('Auth', ['$location', '$rootScope', 'Session', 'User', '$cookieStore',
 function Auth ($location, $rootScope, Session, User, $cookieStore) {
 	
 	// Get currentUser from cookie
@@ -11,39 +11,20 @@ function Auth ($location, $rootScope, Session, User, $cookieStore) {
 	/**
 	 * Authenticate user
 	 * 
-	 * @param {Object} user The user's login info
-	 * @param {Function} [callback] Optional callback to call after login success/fail
+	 * @param {Object} credentials The user's login info
 	 * @return {Promise}            
 	 */
-	this.login = function (user, callback) {
-		callback = callback || angular.noop;
-
-		return Session.save({
-			email: user.email,
-			password: user.password
-		}, function (user) {
-			$rootScope.currentUser = user;
-			return callback();
-		}, function (err) {
-			return callback(err);
-		}).$promise;
+	this.login = function (credentials) {
+		return User.login(credentials);
 	};
 
 	/**
-	 * Log user out
+	 * Log the user out
 	 * 
-	 * @param {Function} [callback] Optional callback to call after logout success/fail
 	 * @return {Promise}           
 	 */
-	this.logout = function (callback) {
-		callback = callback || angular.noop;
-
-		return Session.delete(function () {
-			$rootScope.currentUser = null;
-			return callback();
-		}, function (err) {
-			return callback(err);
-		}).$promise;
+	this.logout = function () {
+		return User.logout();
 	};
 
 	/**
@@ -56,13 +37,12 @@ function Auth ($location, $rootScope, Session, User, $cookieStore) {
 	this.createUser = function (user, callback) {
 		callback = callback || angular.noop;
 
-		return User.save(user,
-		function (user) {
+		return User.create(user).then(function (user) {
 			$rootScope.currentUser = user;
 			return callback(user);
 		}, function (err) {
 			return callback(err);
-		}).$promise;
+		});
 	};
 
 	/**
@@ -79,11 +59,11 @@ function Auth ($location, $rootScope, Session, User, $cookieStore) {
 		return User.update({
 			oldPassword: oldPassword,
 			newPassword: newPassword
-		}, function (user) {
+		}).then(function (user) {
 			return callback(user);
 		}, function (err) {
 			return callback(err);
-		}).$promise;
+		});
 	};
 
 	/**

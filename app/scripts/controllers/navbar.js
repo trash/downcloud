@@ -12,8 +12,7 @@ angular.module('findieApp')
 	}];
 	
 	$scope.logout = function() {
-		Auth.logout()
-		.then(function() {
+		Auth.logout().then(function () {
 			$location.path('/login');
 		});
 	};
