@@ -25,6 +25,15 @@ function ($routeProvider, $locationProvider, $httpProvider) {
 		controller: 'SettingsCtrl',
 		authenticate: true
 	})
+	.when('/u/:username', {
+		templateUrl: 'partials/findie-page',
+		controller: 'FindiePageCtrl',
+		resolve: {
+			username: ['$route', function ($route) {
+				return $route.current.params.username;
+			}]
+		}
+	})
 	.otherwise({
 		redirectTo: '/'
 	});
