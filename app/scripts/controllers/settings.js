@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SettingsCtrl', function ($scope, User, Auth) {
+.controller('SettingsCtrl', function ($scope, User) {
 	$scope.errors = {};
 
 	$scope.changePassword = function (form) {
 		$scope.submitted = true;
 
 		if (form.$valid) {
-			Auth.changePassword($scope.user.oldPassword, $scope.user.newPassword).then(function () {
+			User.changePassword($scope.user.oldPassword, $scope.user.newPassword).then(function () {
 				$scope.message = 'Password successfully changed.';
 			}).catch(function () {
 				form.password.$setValidity('mongoose', false);

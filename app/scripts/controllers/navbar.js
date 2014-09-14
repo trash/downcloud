@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('NavbarCtrl', ['$scope', '$location', 'Auth', function ($scope, $location, Auth) {
+.controller('NavbarCtrl', ['$scope', '$location', 'User', function ($scope, $location, User) {
 	$scope.menu = [{
 		title: 'Home',
 		link: '/'
@@ -12,7 +12,7 @@ angular.module('findieApp')
 	}];
 	
 	$scope.logout = function() {
-		Auth.logout().then(function () {
+		User.logout().then(function () {
 			$location.path('/login');
 		});
 	};

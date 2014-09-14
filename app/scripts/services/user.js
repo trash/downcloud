@@ -46,6 +46,20 @@ angular.module('findieApp')
 	};
 
 	/**
+	 * Updates the users password
+	 * 
+	 * @param {String} oldPassword
+	 * @param {String} newPassword
+	 * @return {Promise} Promise
+	 */
+	this.updatePassword = function (oldPassword, newPassword) {
+		return this.update({
+			oldPassword: oldPassword,
+			newPassword: newPassword
+		});
+	};
+
+	/**
 	 * Sends a request to patch data on the user object
 	 * Right now this is only called by the update password method
 	 * 
@@ -63,5 +77,14 @@ angular.module('findieApp')
 	 */
 	this.get = function () {
 		return $http.get(usersPath + 'me');
+	};
+
+	/**
+	 * Simple check to see if a user is logged in
+	 * 
+	 * @return {Boolean} Whether or not the user is logged in
+	 */
+	this.isLoggedIn = function () {
+		return !!$rootScope.currentUser;
 	};
 }]);
