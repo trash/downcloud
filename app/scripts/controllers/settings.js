@@ -17,10 +17,12 @@ function (
 	$scope.addSocialLink = function (socialLink) {
 		var parsedSocialLink = new SocialLink(socialLink);
 
-		User.addSocialLink(parsedSocialLink).then(function () {
-			$scope.user = $scope.currentUser;
-		});
+		User.addSocialLink(parsedSocialLink);
 	};
+
+	$scope.removeSocialLink = function (socialLink) {
+		User.removeSocialLink(socialLink);
+	}
 
 	// $scope.changePassword = function (form) {
 	// 	$scope.submitted = true;

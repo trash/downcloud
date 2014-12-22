@@ -67,11 +67,30 @@ function (
 		});
 	};
 
+	/**
+	 * Send a request to add a social link to the users list of social links
+	 *
+	 * @param {Object} socialLink Social link data
+	 */
 	this.addSocialLink = function (socialLink) {
 		return $http({
 			url: '/api/users/' + $rootScope.currentUser.username + '/social-links',
 			method: 'POST',
 			data: socialLink
+		}).then(function (response) {
+			// Update the user with the new social links
+			updateUser({
+				socialLinks: response.data
+			});
+		});
+	};
+
+	this.removeSocialLink = function (socialLink) {
+		var socialLinkId = socialLink._id;
+
+		return $http({
+			url: '/api/users/' + $rootScope.currentUser.username + '/social-links/' + socialLinkId,
+			method: 'DELETE'
 		}).then(function (response) {
 			// Update the user with the new social links
 			updateUser({
