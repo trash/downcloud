@@ -35,7 +35,7 @@
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-					<a ng-hide="item.mustBeLoggedIn" ng-href="{{ item.link }}">{{ item.title }}</a>
+					<a ng-hide="item.mustBeLoggedIn && !currentUser" ng-href="{{ item.link }}">{{ item.title }}</a>
 				</li>
 				<li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
 				<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}">
