@@ -74,4 +74,7 @@ function (
 			$location.path('/login');
 		}
 	});
+}])
+.run(['$rootScope', 'alerts', function ($rootScope, alerts) {
+	$rootScope.alerts = alerts;
 }]);

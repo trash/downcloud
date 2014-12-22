@@ -3,9 +3,9 @@
 angular.module('findieApp')
 
 .service('User',[
-	'$http', '$rootScope', '$resource', '$cookieStore',
+	'$http', '$rootScope', '$resource', '$cookieStore', 'alerts',
 function (
-	$http, $rootScope, $resource, $cookieStore
+	$http, $rootScope, $resource, $cookieStore, alerts
 ) {
 	var usersPath = '/api/users/';
 	var userSession = $resource('/api/session/');
@@ -127,6 +127,18 @@ function (
 			url: usersPath + 'me',
 			method: 'PATCH',
 			data: userData
+		}).then(function (response) {
+			if (response.status !== 200) {
+				alerts.add({
+					message: 'An error occurred.',
+					class: 'alert-error'
+				});
+			} else {
+				alerts.add({
+					message: 'Profile data updated successfully.',
+					autoClose: true
+				});
+			}
 		});
 	};
 

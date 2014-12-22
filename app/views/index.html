@@ -26,6 +26,13 @@
 
 	<div ng-include="'partials/navbar.html'"></div>
 
+	<div class="notification-container">
+		<div ng-repeat="alert in alerts.list" class="alert {{ alert.class }}" role="alert">
+			{{ alert.message }}
+			 <button type="button" class="close" ng-click="alerts.close($index)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+	</div>
+
 	<!-- Add your site or application content here -->
 	<div class="container" ng-view=""></div>
 
@@ -72,6 +79,7 @@
 	<script src="scripts/controllers/settings-password.js"></script>
 	<script src="scripts/controllers/findie-page.js"></script>
 	<script src="scripts/services/user.js"></script>
+	<script src="scripts/services/alerts.js"></script>
 	<script src="scripts/services/social-link.js"></script>
 	<script src="scripts/services/users.js"></script>
 	<script src="scripts/directives/mongooseError.js"></script>
