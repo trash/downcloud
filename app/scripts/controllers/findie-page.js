@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('FindiePageCtrl', ['$scope', 'username', function ($scope, username) {
-	$scope.username = username;
+.controller('FindiePageCtrl', ['$scope', 'user', function ($scope, user) {
+	$scope.user = user;
 }]);

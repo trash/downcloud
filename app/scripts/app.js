@@ -6,8 +6,11 @@ angular.module('findieApp', [
 	'ngSanitize',
 	'ngRoute'
 ])
-.config(['$routeProvider', '$locationProvider', '$httpProvider',
-function ($routeProvider, $locationProvider, $httpProvider) {
+.config([
+	'$routeProvider', '$locationProvider', '$httpProvider',
+function (
+	$routeProvider, $locationProvider, $httpProvider
+) {
 	$routeProvider.when('/', {
 		templateUrl: 'partials/main',
 		controller: 'MainCtrl'
@@ -34,8 +37,10 @@ function ($routeProvider, $locationProvider, $httpProvider) {
 		templateUrl: 'partials/findie-page',
 		controller: 'FindiePageCtrl',
 		resolve: {
-			username: ['$route', function ($route) {
-				return $route.current.params.username;
+			user: ['$route', 'users', function ($route, users) {
+				var username = $route.current.params.username;
+
+				return users.get(username);
 			}]
 		}
 	})
