@@ -17,10 +17,13 @@ function (
 	/**
 	 * Update the current user on the rootscope
 	 *
-	 * @param {Object} user User object. This is a subset of the model
+	 * @param {Object} user User object or user data to extend onto user object
 	 */
 	var updateUser = function (user) {
-		$rootScope.currentUser = user;
+		if (!$rootScope.currentUser) {
+			$rootScope.currentUser = {};
+		}
+		angular.extend($rootScope.currentUser, user);
 	};
 
 	/**
@@ -61,6 +64,19 @@ function (
 	this.create = function (user) {
 		return $http.post(usersPath, user).then(function (response) {
 			updateUser(response.data);
+		});
+	};
+
+	this.addSocialLink = function (socialLink) {
+		return $http({
+			url: '/api/users/' + $rootScope.currentUser.username + '/social-links',
+			method: 'POST',
+			data: socialLink
+		}).then(function (response) {
+			// Update the user with the new social links
+			updateUser({
+				socialLinks: response.data
+			});
 		});
 	};
 

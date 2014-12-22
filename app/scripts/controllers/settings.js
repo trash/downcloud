@@ -1,10 +1,26 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SettingsCtrl', function ($scope, User) {
+.controller('SettingsCtrl', [
+	'$scope', 'User', '$http', 'SocialLink',
+function (
+	$scope, User, $http, SocialLink
+) {
 	$scope.errors = {};
 
 	$scope.user = $scope.currentUser;
+
+	$scope.updateProfile = function () {
+		console.log('sup m8');
+	};
+
+	$scope.addSocialLink = function (socialLink) {
+		var parsedSocialLink = new SocialLink(socialLink);
+
+		User.addSocialLink(parsedSocialLink).then(function () {
+			$scope.user = $scope.currentUser;
+		});
+	};
 
 	// $scope.changePassword = function (form) {
 	// 	$scope.submitted = true;
@@ -18,4 +34,4 @@ angular.module('findieApp')
 	// 		});
 	// 	}
 	// };
-});
+}]);

@@ -1,13 +1,15 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ul class="nav nav-tabs">
-			<li role="presentation" class="active"><a href="/settings">Edit Profile Info</a></li>
+			<li role="presentation" class="active"><a href="/settings">Update Profile</a></li>
 			<li role="presentation"><a href="/settings/password">Change Password</a></li>
 		</ul>
 
-		<br/>
-
-		<form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+	</div>
+</div>
+<div class="row settings-section">
+	<div class="col-sm-12">
+		<form class="form" name="form" ng-submit="updateProfile(form)" novalidate>
 			<div class="form-group">
 				<label>Username</label>
 
@@ -68,7 +70,23 @@
 
 			<p class="help-block"> {{ message }} </p>
 
-			<button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+			<button class="btn btn-primary" type="submit">Save changes</button>
+		</form>
+	</div>
+</div>
+<div class="row settings-section">
+	<div class="col-sm-12">
+		<form class="form" ng-submit="addSocialLink(socialLink)">
+			<label>Social Links</label>
+			<ul>
+				<li ng-repeat="socialLink in user.socialLinks">
+					{{ socialLink }}
+				</li>
+			</ul>
+
+			<input type="text" name="socialLink" class="form-control" ng-model="socialLink"/>
+			<br/>
+			<button class="btn btn-primary">Add Social Link</button>
 		</form>
 	</div>
 </div>
