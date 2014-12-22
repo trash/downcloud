@@ -107,9 +107,11 @@ function (
 	 * @return {Promise} Promise
 	 */
 	this.updatePassword = function (oldPassword, newPassword) {
-		return this.update({
-			oldPassword: oldPassword,
-			newPassword: newPassword
+		return $http.patch(usersPath + 'me/password', {
+			data:{
+				oldPassword: oldPassword,
+				newPassword: newPassword
+			}
 		});
 	};
 
@@ -121,7 +123,11 @@ function (
 	 * @return {Promise} Promise from the server response
 	 */
 	this.update = function (userData) {
-		return $http.patch(usersPath, userData);
+		return $http({
+			url: usersPath + 'me',
+			method: 'PATCH',
+			data: userData
+		});
 	};
 
 	/**

@@ -10,8 +10,15 @@ function (
 
 	$scope.user = $scope.currentUser;
 
-	$scope.updateProfile = function () {
-		console.log('sup m8');
+	$scope.updateProfile = function (form) {
+		var userData = {},
+			relevantFormData = Object.keys(form).filter(function (key) {
+			return key.indexOf('$') === -1;
+		}).forEach(function (key) {
+			userData[key] = $scope.user[key];
+		});
+
+		User.update(userData);
 	};
 
 	$scope.addSocialLink = function (socialLink) {
