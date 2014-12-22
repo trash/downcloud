@@ -25,6 +25,11 @@ function ($routeProvider, $locationProvider, $httpProvider) {
 		controller: 'SettingsCtrl',
 		authenticate: true
 	})
+	.when('/settings/password', {
+		templateUrl: 'partials/settings-password',
+		controller: 'SettingsPasswordCtrl',
+		authenticate: true
+	})
 	.when('/u/:username', {
 		templateUrl: 'partials/findie-page',
 		controller: 'FindiePageCtrl',

@@ -27,6 +27,15 @@ function (
 	};
 	
 	$scope.isActive = function (route) {
-		return route === $location.path();
+		var path = $location.path();
+
+		if (
+			// Exact match or
+			route === path ||
+			// It's a partial match i.e. /settings/password matches /settings (ignore '/') 
+			(route.length > 1 && path.indexOf(route) !== -1)) {
+			return true;
+		}
+		return false;
 	};
 }]);
