@@ -5,4 +5,8 @@
 	border-radius: 0.5em;
 	border: 1px solid #eee;
 	padding: 1em 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }

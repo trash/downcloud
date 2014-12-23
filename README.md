@@ -29,7 +29,7 @@ You'll do this every time you want to start the app.
 
 #### First Time Setup
 1. From the main repo directory run `$ grunt heroku`. This will build everything into a directory insdie the main directory called `dist`.
-2. Next we need to hook up this build directory, `dist`, with the heroku repo. To do this, first `cd` into `dist` and then run `$ git remote add heroku git@heroku.com:findie.git`.
+2. Next we need to hook up this build directory, `dist`, with the heroku repo. To do this, first `cd` into `dist` and then run `$ git init`. This initializes a new git repo just for pushing to heroku. Hook it up to heroku by adding heroku as a remote `$ git remote add heroku git@heroku.com:findie.git`.
 3. Add our build stuff and commit it. `$ git add -A` and `$ git commit -m "V 1.33.7 push"`.
 4. Now we're ready to push to heroku. Just run `$ git push heroku master`.
 
