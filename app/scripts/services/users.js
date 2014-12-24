@@ -3,9 +3,9 @@
 angular.module('findieApp')
 
 .service('users',[
-	'$http', 'User',
+	'$http', '$location', 'User',
 function (
-	$http, User
+	$http, $location, User
 ) {
 	var usersPath = '/api/users/';
 

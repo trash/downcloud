@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SignupCtrl', ['$scope', 'users', '$location', function ($scope, users, $location) {
+.controller('SignupCtrl', [
+	'$scope', 'users', '$location', 'alerts',
+function (
+	$scope, users, $location, alerts
+) {
 	$scope.user = {};
 	$scope.errors = {};
 
@@ -16,7 +20,11 @@ angular.module('findieApp')
 				username: $scope.user.username
 			}).then(function () {
 				// Account created, redirect to home
-				$location.path('/');
+				$location.path('/settings');
+				alerts.add({
+					message: 'Your account has been successfully created. Why don\'t you go ahead and enter in the rest of the information for your profile now.',
+					class: 'alert-info'
+				});
 			}).catch(function (err) {
 				err = err.data;
 				$scope.errors = {};
