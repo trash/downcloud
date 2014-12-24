@@ -4,6 +4,7 @@ var Model = require('ampersand-model'),
 	SocialLinkCollection = require('./social-link-collection');
 
 var UserModel = Model.extend({
+	idAttribute: '_id',
 	props: {
 		username: 'string',
 		name: 'string',

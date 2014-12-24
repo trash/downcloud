@@ -1,7 +1,5 @@
 'use strict';
 
-var SocialLinkModel = require('../models/social-link-model');
-
 angular.module('findieApp')
 .controller('SettingsCtrl', [
 	'$scope', 'User',

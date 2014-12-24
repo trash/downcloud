@@ -87,15 +87,9 @@ function (
 	};
 
 	UserSingleton.prototype.removeSocialLink = function (socialLink) {
-		var socialLinkId = socialLink._id;
-
-		return $http({
-			url: '/api/users/' + $rootScope.currentUser.username + '/social-links/' + socialLinkId,
-			method: 'DELETE'
-		}).then(function (response) {
-			// Update the user with the new social links
-			this.user.socialLinks.set(response.data);
-		}.bind(this));
+		socialLink.destroy({
+			url: '/api/users/' + this.user.username + '/social-links/' + socialLink._id
+		});
 	};
 
 	/**

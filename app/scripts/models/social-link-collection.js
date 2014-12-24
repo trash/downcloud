@@ -5,6 +5,7 @@ var Collection = require('ampersand-rest-collection'),
 
 var SocialLinkCollection = Collection.extend({
 	model: SocialLinkModel,
+	mainIndex: '_id',
 	// This should be replaced by the user model or manually after construction before fetch,
 	url: '/api/users/<username>/social-links',
 	// ajaxConfig: function () {

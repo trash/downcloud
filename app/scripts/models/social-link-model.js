@@ -3,6 +3,7 @@
 var Model = require('ampersand-model');
 
 var SocialLinkModel = Model.extend({
+	idAttribute: '_id',
 	props: {
 		originalUrl: 'string',
 		_id: 'string'
