@@ -29,22 +29,23 @@ var SocialLinkModel = Model.extend({
 				var networkParts = url.split('http://')[1].split('/')[0].split('.');
 				return networkParts[networkParts.length-2];
 			}
-		},
-		toServer: {
-			deps: ['url', 'network'],
-			fn: function () {
-				return {
-					url: this.url,
-					network: this.network
-				};
-			}
 		}
 	},
 	initialize: function (data) {
 		if (data && data.url) {
 			this.originalUrl = data.url;
 		}
-	}
+	},
 });
+
+/**
+ * Have to override serialize to get some of this data sent
+ */
+SocialLinkModel.prototype.serialize = function () {
+	return {
+		url: this.url,
+		network: this.network
+	};
+};
 
 module.exports = SocialLinkModel;

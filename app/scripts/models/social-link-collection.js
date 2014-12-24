@@ -23,7 +23,4 @@ SocialLinkCollection.prototype.bootstrapUrl = function (username) {
 	this.url = this.url.replace('<username>', username);
 };
 
-// var collection = new MyCollection()
-// collection.fetch();
-
 module.exports = SocialLinkCollection;

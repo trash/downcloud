@@ -79,14 +79,11 @@ function (
 	 * @param {Object} socialLink Social link data
 	 */
 	UserSingleton.prototype.addSocialLink = function (socialLink) {
-		return $http({
-			url: '/api/users/' + $rootScope.currentUser.username + '/social-links',
-			method: 'POST',
-			data: socialLink.toServer
-		}).then(function (response) {
-			// Update the user with the new social links
-			this.user.socialLinks.set(response.data);
-		}.bind(this));
+		this.user.socialLinks.create({
+			originalUrl: socialLink
+		}, {
+			url: this.user.socialLinks.url
+		});
 	};
 
 	UserSingleton.prototype.removeSocialLink = function (socialLink) {
