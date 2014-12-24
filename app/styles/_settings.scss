@@ -10,3 +10,27 @@
 		margin-bottom: 0;
 	}
 }
+
+.social-links {
+	list-style-type: none;
+	padding: 0;
+}
+
+.social-link {
+	color: #333;
+	display: inline-block;
+	width: 1.5em;
+	text-align: center;
+	font-size: 1.25em;
+
+	i {
+		@extend .fa, .fa-globe;
+	}
+
+	&.soundcloud i {
+		@extend .fa-soundcloud;
+	}
+	&.facebook i {
+		@extend .fa-facebook;
+	}
+}
