@@ -6,7 +6,8 @@ angular.module('findieApp')
 function (
 	$scope, $location, User
 ) {
-	var username = $scope.currentUser ? $scope.currentUser.username : '';
+	$scope.username = $scope.currentUser ? $scope.currentUser.username : '';
+
 	$scope.menu = [{
 		title: 'Home',
 		link: '/'
@@ -16,7 +17,7 @@ function (
 		mustBeLoggedIn: true
 	}, {
 		title: 'Profile',
-		link: '/u/' + username,
+		link: '/u/' + $scope.username,
 		mustBeLoggedIn: true
 	}];
 	

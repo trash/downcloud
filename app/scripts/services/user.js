@@ -14,12 +14,14 @@ function (
 	$rootScope.currentUser = $cookieStore.get('user') || null;
  	$cookieStore.remove('user');
 
+	var UserSingleton = function () {};
+
 	/**
 	 * Update the current user on the rootscope
 	 *
 	 * @param {Object} user User object or user data to extend onto user object
 	 */
-	var updateUser = function (user) {
+	UserSingleton.prototype.updateUser = function (user) {
 		if (!$rootScope.currentUser) {
 			$rootScope.currentUser = {};
 		}
@@ -37,10 +39,10 @@ function (
 	 *
 	 * @return {Promise} Promise resolved on response from server
 	 */
-	this.login = function (credentials) {
+	UserSingleton.prototype.login = function (credentials) {
 		return userSession.save(credentials, function (user) {
-			updateUser(user);
-		}).$promise;
+			this.updateUser(user);
+		}.bind(this)).$promise;
 	};
 
 	/**
@@ -48,7 +50,7 @@ function (
 	 *
 	 * @return {Promise} Promise resolved upon response from server
 	 */
-	this.logout = function () {
+	UserSingleton.prototype.logout = function () {
 		return userSession.delete(function () {
 			$rootScope.currentUser = null;
 		}).$promise;
@@ -61,10 +63,10 @@ function (
 	 *
 	 * @return {Promise} Promise from response
 	 */
-	this.create = function (user) {
+	UserSingleton.prototype.create = function (user) {
 		return $http.post(usersPath, user).then(function (response) {
-			updateUser(response.data);
-		});
+			this.updateUser(response.data);
+		}.bind(this));
 	};
 
 	/**
@@ -72,20 +74,20 @@ function (
 	 *
 	 * @param {Object} socialLink Social link data
 	 */
-	this.addSocialLink = function (socialLink) {
+	UserSingleton.prototype.addSocialLink = function (socialLink) {
 		return $http({
 			url: '/api/users/' + $rootScope.currentUser.username + '/social-links',
 			method: 'POST',
 			data: socialLink
 		}).then(function (response) {
 			// Update the user with the new social links
-			updateUser({
+			this.updateUser({
 				socialLinks: response.data
 			});
-		});
+		}.bind(this));
 	};
 
-	this.removeSocialLink = function (socialLink) {
+	UserSingleton.prototype.removeSocialLink = function (socialLink) {
 		var socialLinkId = socialLink._id;
 
 		return $http({
@@ -93,10 +95,10 @@ function (
 			method: 'DELETE'
 		}).then(function (response) {
 			// Update the user with the new social links
-			updateUser({
+			this.updateUser({
 				socialLinks: response.data
 			});
-		});
+		}.bind(this));
 	};
 
 	/**
@@ -106,7 +108,7 @@ function (
 	 * @param {String} newPassword
 	 * @return {Promise} Promise
 	 */
-	this.updatePassword = function (oldPassword, newPassword) {
+	UserSingleton.prototype.updatePassword = function (oldPassword, newPassword) {
 		return $http.patch(usersPath + 'me/password', {
 			data:{
 				oldPassword: oldPassword,
@@ -122,7 +124,7 @@ function (
 	 * @param {Object} userData Object containing the fields on the user model to update
 	 * @return {Promise} Promise from the server response
 	 */
-	this.update = function (userData) {
+	UserSingleton.prototype.update = function (userData) {
 		return $http({
 			url: usersPath + 'me',
 			method: 'PATCH',
@@ -147,7 +149,7 @@ function (
 	 *
 	 * @return {Promise} Promise that resolves with the user
 	 */
-	this.get = function () {
+	UserSingleton.prototype.get = function () {
 		return $http.get(usersPath + 'me');
 	};
 
@@ -156,7 +158,11 @@ function (
 	 *
 	 * @return {Boolean} Whether or not the user is logged in
 	 */
-	this.isLoggedIn = function () {
+	UserSingleton.prototype.isLoggedIn = function () {
 		return !!$rootScope.currentUser;
 	};
+
+	var userSingleton = new UserSingleton();
+
+	return userSingleton;
 }]);
