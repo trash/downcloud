@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SignupCtrl', ['$scope', 'User', '$location', function ($scope, User, $location) {
+.controller('SignupCtrl', ['$scope', 'users', '$location', function ($scope, users, $location) {
 	$scope.user = {};
 	$scope.errors = {};
 
@@ -9,7 +9,7 @@ angular.module('findieApp')
 		$scope.submitted = true;
 
 		if (form.$valid) {
-			User.create({
+			users.create({
 				name: $scope.user.name,
 				email: $scope.user.email,
 				password: $scope.user.password,

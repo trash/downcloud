@@ -61,19 +61,6 @@ function (
 	};
 
 	/**
-	 * Sends a request to create a new user
-	 *
-	 * @param {Object} user The user data object
-	 *
-	 * @return {Promise} Promise from response
-	 */
-	UserSingleton.prototype.create = function (user) {
-		return $http.post(usersPath, user).then(function (response) {
-			this.updateUser(response.data);
-		}.bind(this));
-	};
-
-	/**
 	 * Send a request to add a social link to the users list of social links
 	 *
 	 * @param {Object} socialLink Social link data
@@ -150,7 +137,7 @@ function (
 	 * @return {Boolean} Whether or not the user is logged in
 	 */
 	UserSingleton.prototype.isLoggedIn = function () {
-		return !!$rootScope.currentUser;
+		return !!this.user;
 	};
 
 	var userSingleton = new UserSingleton();

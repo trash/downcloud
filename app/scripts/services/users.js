@@ -3,9 +3,9 @@
 angular.module('findieApp')
 
 .service('users',[
-	'$http',
+	'$http', 'User',
 function (
-	$http
+	$http, User
 ) {
 	var usersPath = '/api/users/';
 
@@ -18,5 +18,18 @@ function (
 		return $http.get(usersPath + username).then(function (response) {
 			return response.data;
 		});
+	};
+
+	/**
+	 * Sends a request to create a new user
+	 *
+	 * @param {Object} user The user data object
+	 *
+	 * @return {Promise} Promise from response
+	 */
+	this.create = function (user) {
+		return $http.post(usersPath, user).then(function (response) {
+			User.updateUser(response.data);
+		}.bind(this));
 	};
 }]);
