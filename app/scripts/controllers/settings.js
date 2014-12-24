@@ -9,7 +9,14 @@ function (
 	$scope.errors = {};
 
 	$scope.user = $scope.currentUser;
+	$scope.User = User;
 
+	/**
+	 * Iterates through all the non-angularey values (starting with '$')
+	 * in the form and sends a PATCH request with them to the user endpoint
+	 *
+	 * @param {Angular.element} form Angular form element
+	 */
 	$scope.updateProfile = function (form) {
 		var userData = {};
 
@@ -21,25 +28,4 @@ function (
 
 		User.update(userData);
 	};
-
-	$scope.addSocialLink = function (socialLink) {
-		User.addSocialLink(socialLink);
-	};
-
-	$scope.removeSocialLink = function (socialLink) {
-		User.removeSocialLink(socialLink);
-	};
-
-	// $scope.changePassword = function (form) {
-	// 	$scope.submitted = true;
-
-	// 	if (form.$valid) {
-	// 		User.changePassword($scope.user.oldPassword, $scope.user.newPassword).then(function () {
-	// 			$scope.message = 'Password successfully changed.';
-	// 		}).catch(function () {
-	// 			form.password.$setValidity('mongoose', false);
-	// 			$scope.errors.other = 'Incorrect password';
-	// 		});
-	// 	}
-	// };
 }]);

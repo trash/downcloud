@@ -76,12 +76,12 @@
 </div>
 <div class="row settings-section">
 	<div class="col-sm-12">
-		<form class="form" ng-submit="addSocialLink(socialLink)">
+		<form class="form" ng-submit="User.addSocialLink(socialLink)">
 			<label>Social Links</label>
 			<ul>
 				<li ng-repeat="socialLink in user.socialLinks.models">
 					{{ socialLink.network || 'invalid' }}: {{ socialLink.url }}
-					<a href="" ng-click="removeSocialLink(socialLink)">
+					<a href="" ng-click="User.removeSocialLink(socialLink)">
 						<i class="glyphicon glyphicon-remove"></i>
 					</a>
 				</li>
