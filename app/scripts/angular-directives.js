@@ -1,0 +1,1 @@
+require('./directives/mongoose-error');
