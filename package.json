@@ -2,6 +2,7 @@
   "name": "findie",
   "version": "0.0.0",
   "dependencies": {
+    "ampersand-model": "^4.0.3",
     "body-parser": "~1.0.0",
     "browserify": "^7.0.3",
     "colors": "^1.0.3",

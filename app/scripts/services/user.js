@@ -78,7 +78,7 @@ function (
 		return $http({
 			url: '/api/users/' + $rootScope.currentUser.username + '/social-links',
 			method: 'POST',
-			data: socialLink
+			data: socialLink.toServer
 		}).then(function (response) {
 			// Update the user with the new social links
 			this.updateUser({

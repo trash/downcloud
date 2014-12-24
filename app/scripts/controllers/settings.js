@@ -23,7 +23,9 @@ function (
 	};
 
 	$scope.addSocialLink = function (socialLink) {
-		var parsedSocialLink = new SocialLink(socialLink);
+		var parsedSocialLink = new SocialLink({
+			originalUrl: socialLink
+		});
 
 		User.addSocialLink(parsedSocialLink);
 	};

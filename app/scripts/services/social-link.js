@@ -1,16 +1,40 @@
 'use strict';
 
+var Model = require('ampersand-model');
+
 angular.module('findieApp')
 
 .service('SocialLink',[
 function (
 ) {
-	var SocialLink = function (url) {
-		var normalized = this.normalizeUrl(url);
-
-		this.url = normalized.url;
-		this.network = normalized.network;
-	};
+	var SocialLink = Model.extend({
+		props: {
+			originalUrl: 'string',
+		},
+		derived: {
+			url: {
+				deps: ['originalUrl'],
+				fn: function () {
+					return this.normalizeUrl(this.originalUrl).url;
+				}
+			},
+			network: {
+				deps: ['originalUrl'],
+				fn: function () {
+					return this.normalizeUrl(this.originalUrl).network;
+				}
+			},
+			toServer: {
+				deps: ['url', 'network'],
+				fn: function () {
+					return {
+						url: this.url,
+						network: this.network
+					};
+				}
+			}
+		}
+	});
 
 	/**
 	 * Takes a url and returns the network name and the normalized url
@@ -35,7 +59,6 @@ function (
 			url: url,
 			network: network
 		};
-
 	};
 
 	return SocialLink;
