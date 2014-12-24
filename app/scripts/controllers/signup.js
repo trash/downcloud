@@ -22,7 +22,7 @@ function (
 				// Account created, redirect to home
 				$location.path('/settings');
 				alerts.add({
-					message: 'Your account has been successfully created. Why don\'t you go ahead and enter in the rest of the information for your profile now.',
+					message: 'Your account has been successfully created. Feel free to fill out the rest of your profile now.',
 					class: 'alert-info'
 				});
 			}).catch(function (err) {
