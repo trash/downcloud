@@ -1,3 +1,3 @@
-require('./services/alerts');
-require('./services/users');
-require('./services/user');
+require('./angular-services/alerts');
+require('./angular-services/users');
+require('./angular-services/user');

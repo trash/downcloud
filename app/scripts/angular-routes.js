@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function ($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'partials/main',

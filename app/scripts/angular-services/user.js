@@ -1,6 +1,7 @@
 'use strict';
 
-var UserModel = require('../models/user-model');
+var UserModel = require('../models/user-model'),
+	util = require('../services/util');
 
 angular.module('findieApp')
 
@@ -108,17 +109,16 @@ function (
 			method: 'PATCH',
 			data: userData
 		}).then(function (response) {
-			if (response.status !== 200) {
-				alerts.add({
-					message: 'An error occurred.',
-					class: 'alert-error'
-				});
-			} else {
-				alerts.add({
-					message: 'Profile data updated successfully.',
-					autoClose: true
-				});
-			}
+			alerts.add({
+				message: 'Profile data updated successfully.',
+				autoClose: true
+			});
+		}, function (response) {
+			var error = response.data;
+			alerts.add({
+				message: error.message + ': ' + util.errorsToString(error.errors),
+				class: 'alert-danger'
+			});
 		});
 	};
 
