@@ -1,5 +1,7 @@
 'use strict';
 
+var UserModel = require('../models/user-model');
+
 angular.module('findieApp')
 
 .service('User',[
@@ -10,11 +12,11 @@ function (
 	var usersPath = '/api/users/';
 	var userSession = $resource('/api/session/');
 
-	// Get currentUser from cookie
-	$rootScope.currentUser = $cookieStore.get('user') || null;
- 	$cookieStore.remove('user');
-
-	var UserSingleton = function () {};
+	var UserSingleton = function () {
+		// Get currentUser from cookie
+		$rootScope.currentUser = this.updateUser($cookieStore.get('user'));
+	 	$cookieStore.remove('user');
+	};
 
 	/**
 	 * Update the current user on the rootscope
@@ -22,10 +24,11 @@ function (
 	 * @param {Object} user User object or user data to extend onto user object
 	 */
 	UserSingleton.prototype.updateUser = function (user) {
-		if (!$rootScope.currentUser) {
-			$rootScope.currentUser = {};
-		}
-		angular.extend($rootScope.currentUser, user);
+		this.user = new UserModel(user);
+
+		$rootScope.currentUser = this.user;
+
+		return this.user;
 	};
 
 	/**
@@ -52,8 +55,9 @@ function (
 	 */
 	UserSingleton.prototype.logout = function () {
 		return userSession.delete(function () {
+			this.user = null;
 			$rootScope.currentUser = null;
-		}).$promise;
+		}.bind(this)).$promise;
 	};
 
 	/**
@@ -81,9 +85,7 @@ function (
 			data: socialLink.toServer
 		}).then(function (response) {
 			// Update the user with the new social links
-			this.updateUser({
-				socialLinks: response.data
-			});
+			this.user.socialLinks.set(response.data);
 		}.bind(this));
 	};
 
@@ -95,9 +97,7 @@ function (
 			method: 'DELETE'
 		}).then(function (response) {
 			// Update the user with the new social links
-			this.updateUser({
-				socialLinks: response.data
-			});
+			this.user.socialLinks.set(response.data);
 		}.bind(this));
 	};
 

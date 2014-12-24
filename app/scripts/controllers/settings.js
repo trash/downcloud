@@ -1,10 +1,13 @@
 'use strict';
 
+var SocialLinkModel = require('../models/social-link-model'),
+	SocialLinkCollection = require('../models/social-link-collection');
+
 angular.module('findieApp')
 .controller('SettingsCtrl', [
-	'$scope', 'User', '$http', 'SocialLink',
+	'$scope', 'User',
 function (
-	$scope, User, $http, SocialLink
+	$scope, User
 ) {
 	$scope.errors = {};
 
@@ -23,7 +26,7 @@ function (
 	};
 
 	$scope.addSocialLink = function (socialLink) {
-		var parsedSocialLink = new SocialLink({
+		var parsedSocialLink = new SocialLinkModel({
 			originalUrl: socialLink
 		});
 

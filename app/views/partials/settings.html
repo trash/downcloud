@@ -79,7 +79,7 @@
 		<form class="form" ng-submit="addSocialLink(socialLink)">
 			<label>Social Links</label>
 			<ul>
-				<li ng-repeat="socialLink in user.socialLinks">
+				<li ng-repeat="socialLink in user.socialLinks.models">
 					{{ socialLink.network || 'invalid' }}: {{ socialLink.url }}
 					<a href="" ng-click="removeSocialLink(socialLink)">
 						<i class="glyphicon glyphicon-remove"></i>
