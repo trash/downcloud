@@ -3,9 +3,7 @@
 angular.module('findieApp')
 
 .service('SocialLink',[
-	'$http', '$rootScope',
 function (
-	$http, $rootScope
 ) {
 	var SocialLink = function (url) {
 		var normalized = this.normalizeUrl(url);

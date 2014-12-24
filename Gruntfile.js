@@ -47,40 +47,40 @@ module.exports = function (grunt) {
 			}
 		},
 		watch: {
-			js: {
-				files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-				tasks: ['newer:jshint:all'],
-				options: {
-					// livereload: true
-				}
-			},
-			mochaTest: {
-				files: ['test/server/{,*/}*.js'],
-				tasks: ['env:test', 'mochaTest']
-			},
-			jsTest: {
-				files: ['test/client/spec/{,*/}*.js'],
-				tasks: ['newer:jshint:test', 'karma']
-			},
-			compass: {
-				files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-				tasks: ['compass:server', 'autoprefixer']
-			},
+			// js: {
+			// 	files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+			// 	tasks: ['newer:jshint:all'],
+			// 	options: {
+			// 		// livereload: true
+			// 	}
+			// },
+			// mochaTest: {
+			// 	files: ['test/server/{,*/}*.js'],
+			// 	tasks: ['env:test', 'mochaTest']
+			// },
+			// jsTest: {
+			// 	files: ['test/client/spec/{,*/}*.js'],
+			// 	tasks: ['newer:jshint:test', 'karma']
+			// },
+			// compass: {
+			// 	files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+			// 	tasks: ['compass:server', 'autoprefixer']
+			// },
 			gruntfile: {
 				files: ['Gruntfile.js']
 			},
-			livereload: {
-				files: [
-					'<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
-					'{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
-					'{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
-					'<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
-				],
+			// livereload: {
+			// 	files: [
+			// 		'<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
+			// 		'{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+			// 		'{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+			// 		'<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+			// 	],
 
-				options: {
-					// livereload: true
-				}
-			},
+			// 	options: {
+			// 		// livereload: true
+			// 	}
+			// },
 			express: {
 				files: [
 					'server.js',

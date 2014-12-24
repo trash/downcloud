@@ -11,8 +11,9 @@ function (
 	$scope.user = $scope.currentUser;
 
 	$scope.updateProfile = function (form) {
-		var userData = {},
-			relevantFormData = Object.keys(form).filter(function (key) {
+		var userData = {};
+
+		Object.keys(form).filter(function (key) {
 			return key.indexOf('$') === -1;
 		}).forEach(function (key) {
 			userData[key] = $scope.user[key];
@@ -29,7 +30,7 @@ function (
 
 	$scope.removeSocialLink = function (socialLink) {
 		User.removeSocialLink(socialLink);
-	}
+	};
 
 	// $scope.changePassword = function (form) {
 	// 	$scope.submitted = true;
