@@ -15,13 +15,23 @@ function (
 			url: {
 				deps: ['originalUrl'],
 				fn: function () {
-					return this.normalizeUrl(this.originalUrl).url;
+					var url = this.originalUrl;
+					// Remove existing protocol if one exists
+					if (url.indexOf('://') !== -1) {
+						url = url.split('://')[1];
+					}
+					// Lastly add 'http://'
+					return 'http://' + url;
 				}
 			},
 			network: {
-				deps: ['originalUrl'],
+				deps: ['url'],
 				fn: function () {
-					return this.normalizeUrl(this.originalUrl).network;
+					var url = this.url;
+					// Hacky af
+					// http://play.google.com/derp -> google
+					var networkParts = url.split('http://')[1].split('/')[0].split('.');
+					return networkParts[networkParts.length-2];
 				}
 			},
 			toServer: {
@@ -35,31 +45,6 @@ function (
 			}
 		}
 	});
-
-	/**
-	 * Takes a url and returns the network name and the normalized url
-	 * 
-	 * @param {String} url The url i.e. 'play.google.com/derp'
-	 * @return {Object} Normalized parts i.e. {network: 'google', url: 'http://play.google.com/derp'}
-	 */
-	SocialLink.prototype.normalizeUrl = function (url) {
-		// Remove existing protocol if one exists
-		if (url.indexOf('://') !== -1) {
-			url = url.split('://')[1];
-		}
-
-		// soundcloud.com
-		var networkParts = url.split('/')[0].split('.'),
-			network = networkParts[networkParts.length-2];
-
-		// Lastly add http://
-		url = 'http://' + url;
-
-		return {
-			url: url,
-			network: network
-		};
-	};
 
 	return SocialLink;
 }]);
