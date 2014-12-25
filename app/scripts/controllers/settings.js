@@ -18,14 +18,6 @@ function (
 	 * @param {Angular.element} form Angular form element
 	 */
 	$scope.updateProfile = function (form) {
-		var userData = {};
-
-		Object.keys(form).filter(function (key) {
-			return key.indexOf('$') === -1;
-		}).forEach(function (key) {
-			userData[key] = $scope.user[key];
-		});
-
-		User.update(userData);
+		User.update($scope.user);
 	};
 }]);

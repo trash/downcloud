@@ -2,7 +2,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap',
         '../bower_components/Font-Awesome/scss/font-awesome',
-		'settings',
+        'settings',
+        'forms',
 		'notifications';
 
 .footer {

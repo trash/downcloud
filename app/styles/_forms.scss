@@ -1,0 +1,11 @@
+.form-control {
+	margin-bottom: 0.75em;
+
+	&:first-child {
+		margin-bottom: 0;
+	}
+}
+
+.radio-inline label {
+	font-weight: normal;
+}
