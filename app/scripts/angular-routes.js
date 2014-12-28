@@ -22,6 +22,11 @@ module.exports = function ($routeProvider) {
 		controller: 'SettingsPasswordCtrl',
 		authenticate: true
 	})
+	.when('/settings/profile-picture', {
+		templateUrl: 'partials/settings-profile-picture',
+		controller: 'SettingsProfilePictureCtrl',
+		authenticate: true
+	})
 	.when('/profile', {
 		authenticate: true,
 		resolve: {

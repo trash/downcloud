@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="/settings">Update Profile</a></li>
+			<li role="presentation"><a href="/settings/password">Change Password</a></li>
+			<li role="presentation" class="active"><a href="/settings/profile-picture">Change Profile Picture</a></li>
+		</ul>
+		<br/>
+
+		<form class="form" name="form" method="post" enctype="multipart/form-data" ng-submit="uploadPicture(form)" nope-action="{{ actionUrl }}">
+			<div class="form-group" ng-class="{'has-error': form.password.$error.mongoose}">
+				<input name="picture" type="file">
+			</div>
+
+			<p class="help-block"> {{ message }} </p>
+
+			<button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+		</form>
+	</div>
+</div>
