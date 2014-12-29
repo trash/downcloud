@@ -6,7 +6,8 @@ angular.module('findieApp', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
-	'ngRoute'
+	'ngRoute',
+	'flow'
 ])
 .config([
 	'$routeProvider', '$locationProvider', '$httpProvider',

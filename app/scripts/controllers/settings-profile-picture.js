@@ -6,7 +6,7 @@ angular.module('findieApp')
 
 	$scope.user = $scope.currentUser;
 
-	$scope.actionUrl = '/api/users/' + $scope.user.username + '/profile-picture';
+	$scope.uploadUrl = '/api/users/' + $scope.user.username + '/profile-picture';
 
 	$scope.uploadPicture = function (picture) {
 		// $scope.submitted = true;
