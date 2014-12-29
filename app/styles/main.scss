@@ -17,3 +17,12 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
         margin: 20px 0;
     }
 }
+
+.profile-picture {
+    border: 2px solid #ccc;
+    padding: 0.25em;
+    display: block;
+    width: 10em;
+    height: 10em;
+    margin-bottom: 1em;
+}

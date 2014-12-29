@@ -9,15 +9,9 @@
 
 		<div flow-init="{ target: uploadUrl, testChunks: false }" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
 
-			<span class="btn btn-primary" flow-btn>Upload File</span>
+			<img class="profile-picture" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
 
-			<table>
-				<tr ng-repeat="file in $flow.files">
-					<td>{{$index+1}}</td>
-					<td>{{file.name}}</td>
-					<td>{{file.msg}}</td>
-				</tr>
-			</table>
+			<span class="btn btn-primary" flow-btn>Upload File</span>
 		</div>
 
 		<!-- <form class="form" name="form" method="post" enctype="multipart/form-data" ng-submit="uploadPicture(form)" nope-action="{{ actionUrl }}">
