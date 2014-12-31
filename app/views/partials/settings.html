@@ -3,13 +3,20 @@
 		<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="/settings">Update Profile</a></li>
 			<li role="presentation"><a href="/settings/password">Change Password</a></li>
-			<li role="presentation"><a href="/settings/profile-picture">Change Profile Picture</a></li>
 		</ul>
 
 	</div>
 </div>
 <div class="row settings-section">
 	<div class="col-sm-7">
+		<div flow-init="{ target: uploadUrl, testChunks: false }" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
+			<div class="form-group">
+				<label>Profile Picture</label>
+				<span class="profile-picture-upload" flow-btn>
+				<img class="profile-picture form-control" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
+			</span>
+			</div>
+		</div>
 		<form class="form" name="form" ng-submit="updateProfile(form)" novalidate>
 			<div class="form-group">
 				<label>Username</label>
