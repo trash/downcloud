@@ -17,6 +17,10 @@ function (
 	}, {
 		title: 'Profile',
 		link: '/profile',
+		// Returns true if the current path is a match
+		isMatch: function (path) {
+			return path.indexOf('/u/' + $scope.currentUser.username) !== -1;
+		},
 		mustBeLoggedIn: true
 	}];
 	
@@ -26,8 +30,14 @@ function (
 		});
 	};
 	
-	$scope.isActive = function (route) {
-		var path = $location.path();
+	$scope.isActive = function (item) {
+		var route = item.link,
+			path = $location.path();
+
+		// Use the isMatch function if it's defined
+		if (item.isMatch) {
+			return item.isMatch(path);
+		}
 
 		if (
 			// Exact match or
