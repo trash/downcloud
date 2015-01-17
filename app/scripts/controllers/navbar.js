@@ -19,6 +19,9 @@ function (
 		link: '/profile',
 		// Returns true if the current path is a match
 		isMatch: function (path) {
+			if (!$scope.currentUser) {
+				return false;
+			}
 			return path.indexOf('/u/' + $scope.currentUser.username) !== -1;
 		},
 		mustBeLoggedIn: true

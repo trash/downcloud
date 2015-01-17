@@ -88,7 +88,9 @@ function (
 	 * @return {Promise} Promise
 	 */
 	UserSingleton.prototype.updatePassword = function (oldPassword, newPassword) {
-		return $http.patch(usersPath + 'me/password', {
+		return $http({
+			method: 'PATCH',
+			url: usersPath + 'me/password',
 			data:{
 				oldPassword: oldPassword,
 				newPassword: newPassword

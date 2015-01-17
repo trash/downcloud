@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SettingsPasswordCtrl', function ($scope, User) {
+.controller('SettingsPasswordCtrl', function ($scope, User, alerts) {
 	$scope.errors = {};
 
 	$scope.user = $scope.currentUser;
@@ -11,10 +11,16 @@ angular.module('findieApp')
 
 		if (form.$valid) {
 			User.updatePassword($scope.user.oldPassword, $scope.user.newPassword).then(function () {
-				$scope.message = 'Password successfully changed.';
+				alerts.add({
+					message: 'Password successfully changed.',
+					class: 'alert-success'
+				});
 			}).catch(function () {
 				form.password.$setValidity('mongoose', false);
-				$scope.errors.other = 'Incorrect password';
+				alerts.add({
+					message: 'Incorrect password',
+					class: 'alert-danger'
+				});
 			});
 		}
 	};
