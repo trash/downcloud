@@ -1,4 +1,4 @@
-require('./controllers/findie-page');
+require('./controllers/profile');
 require('./controllers/login');
 require('./controllers/main');
 require('./controllers/navbar');

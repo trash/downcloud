@@ -31,7 +31,7 @@ module.exports = function ($routeProvider) {
 		}
 	})
 	.when('/u/:username', {
-		templateUrl: 'partials/findie-page',
+		templateUrl: 'partials/profile',
 		controller: 'FindiePageCtrl',
 		resolve: {
 			user: ['$route', 'users', function ($route, users) {

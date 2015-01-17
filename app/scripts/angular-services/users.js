@@ -17,6 +17,8 @@ function (
 	this.get = function (username) {
 		return $http.get(usersPath + username).then(function (response) {
 			return response.data;
+		}, function () {
+			return null;
 		});
 	};
 
