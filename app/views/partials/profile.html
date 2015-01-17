@@ -31,12 +31,5 @@
 			<p>{{ user.location }}</p>
 		</div>
 	</div>
-	<div ng-if="!user" class="col-sm-12">
-		<div class="jumbotron jumbotron-gif">
-			<div class="jumbotron-gif-text">
-				<h1>We really tried...</h1>
-				<p>but it doesn't look like this user exists.</p>
-			</div>
-		</div>
-	</div>
+	<div ng-if="!user" ng-include="'partials/404.html'"></div>
 </div>

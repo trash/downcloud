@@ -37,11 +37,16 @@ module.exports = function ($routeProvider) {
 			user: ['$route', 'users', function ($route, users) {
 				var username = $route.current.params.username;
 
-				return users.get(username);
+				return users.get(username).then(function (user) {
+					if (!user) {
+						console.log('we should really be changing the rendered template to a 404');
+					}
+					return user;
+				});
 			}]
 		}
 	})
 	.otherwise({
-		redirectTo: '/'
+		templateUrl: 'partials/404'
 	});
 };
