@@ -70,4 +70,4 @@ gulp.task('jshint', function () {
 // 	}
 // });
 
-gulp.task('default', ['sass', 'browserify', 'watch']);
+gulp.task('default', ['sass', 'browserify', 'jshint', 'watch']);

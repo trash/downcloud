@@ -25,7 +25,7 @@ function (
 	 * @param {Object} user User object or user data to extend onto user object
 	 */
 	UserSingleton.prototype.updateUser = function (user) {
-		this.user = new UserModel(user);
+		this.user = user ? new UserModel(user) : null;
 
 		$rootScope.currentUser = this.user;
 
@@ -108,7 +108,7 @@ function (
 			url: usersPath + 'me',
 			method: 'PATCH',
 			data: userData
-		}).then(function (response) {
+		}).then(function () {
 			alerts.add({
 				message: 'Profile data updated successfully.',
 				autoClose: true

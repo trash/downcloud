@@ -2,9 +2,9 @@
 
 angular.module('findieApp')
 .controller('SettingsCtrl', [
-	'$scope', 'User',
+	'$scope', 'User', '$http',
 function (
-	$scope, User
+	$scope, User, $http
 ) {
 	$scope.errors = {};
 
@@ -17,7 +17,7 @@ function (
 	 *
 	 * @param {Angular.element} form Angular form element
 	 */
-	$scope.updateProfile = function (form) {
+	$scope.updateProfile = function () {
 		User.update($scope.user);
 	};
 
