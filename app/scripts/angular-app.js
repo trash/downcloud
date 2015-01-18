@@ -40,7 +40,7 @@ function (
 	$rootScope.$on('$routeChangeStart', function (event, next) {
 		
 		if (next.authenticate && !User.isLoggedIn()) {
-			$location.path('/login');
+			$location.path('/signup').search('redirect', next.$$route.originalPath);
 		}
 	});
 }])

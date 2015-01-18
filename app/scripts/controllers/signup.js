@@ -9,6 +9,13 @@ function (
 	$scope.user = {};
 	$scope.errors = {};
 
+	$scope.loginUrl = '/login';
+	var redirect = $location.search().redirect;
+	if (redirect) {
+		$scope.loginUrl += '?redirect=' + redirect;
+	}
+
+
 	$scope.register = function (form) {
 		$scope.submitted = true;
 

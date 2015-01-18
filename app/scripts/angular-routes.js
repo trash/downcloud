@@ -30,6 +30,10 @@ module.exports = function ($routeProvider) {
 			}]
 		}
 	})
+	.when('/bounties', {
+		templateUrl: 'partials/bounties',
+		authenticate: true,
+	})
 	.when('/u/:username', {
 		templateUrl: 'partials/profile',
 		controller: 'FindiePageCtrl',

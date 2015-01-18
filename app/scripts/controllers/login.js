@@ -13,6 +13,12 @@ angular.module('findieApp')
 				email: $scope.user.email,
 				password: $scope.user.password
 			}).then(function () {
+				// Check for redirect in query param
+				var redirect = $location.search().redirect;
+				if (redirect) {
+					return $location.path(redirect);
+				}
+
 				// Logged in, redirect to home
 				$location.path('/');
 			}).catch(function (err) {
