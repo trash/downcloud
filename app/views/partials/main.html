@@ -1,9 +1,30 @@
 <div class="row">
 	<div class="col-sm-12">
-		<div class="jumbotron">
-			<h1>Findie</h1>
+		<div class="main-header">
+			<span class="main-header-background"></span>
+			<h1 class="main-header-text">Findie</h1>
 		</div>
-
-		<h4>Find your next game dev job</h4>
+		<ul class="nav nav-tabs">
+			<li role="presentation" ng-class="{'active': tab===1}" ng-click="tab = 1;"><a href="#">For Developers</a></li>
+			<li role="presentation" ng-class="{'active': tab===2}" ng-click="tab = 2;"><a href="#">For Artists</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="slide-panel-container-outer">
+				<div class="slide-panel-container-inner" ng-class="{'right': tab===2}">
+					<div class="slide-panel">
+						<div class="jumbotron">
+							<p>Whether you need a full tile set and a long list of sprites, or just a single character sprite for your game we got you covered. Easily create a listing for your desired job with your specs, budget, and conditions and we’ll get you hooked up with an artist in no time.</p>
+							<p><a class="btn btn-primary btn-lg" href="#" role="button">Post a bounty</a></p>
+						</div>
+					</div>
+					<div class="slide-panel">
+						<div class="jumbotron">
+							<p>Whether you’re a freelance artist or a hobbyist looking for a new challenge, we’re here to help you find some cool stuff to work on and get paid in the process.</p>
+							<p><a class="btn btn-primary btn-lg" href="#" role="button">Find a bounty</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
