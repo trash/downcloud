@@ -34,6 +34,14 @@ module.exports = function ($routeProvider) {
 		templateUrl: 'partials/bounties',
 		authenticate: true,
 	})
+	.when('/bounties/new', {
+		templateUrl: 'partials/new-bounty',
+		authenticate: true,
+	})
+	.when('/bounties/:bountyId', {
+		templateUrl: 'partials/bounty',
+		authenticate: true
+	})
 	.when('/u/:username', {
 		templateUrl: 'partials/profile',
 		controller: 'FindiePageCtrl',
