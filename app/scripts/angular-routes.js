@@ -6,11 +6,13 @@ module.exports = function ($routeProvider) {
 	})
 	.when('/login', {
 		templateUrl: 'partials/login',
-		controller: 'LoginCtrl'
+		controller: 'LoginCtrl',
+		handleLoggedInUser: true
 	})
 	.when('/signup', {
 		templateUrl: 'partials/signup',
-		controller: 'SignupCtrl'
+		controller: 'SignupCtrl',
+		handleLoggedInUser: true
 	})
 	.when('/settings', {
 		templateUrl: 'partials/settings',
