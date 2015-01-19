@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('LoginCtrl', ['$scope', 'User', '$location', function ($scope, User, $location) {
+.controller('LoginCtrl', [
+	'$scope', 'User', '$location', 'redirectHandler',
+function (
+	$scope, User, $location, redirectHandler
+) {
 	$scope.user = {};
 	$scope.errors = {};
 
@@ -13,11 +17,7 @@ angular.module('findieApp')
 				email: $scope.user.email,
 				password: $scope.user.password
 			}).then(function () {
-				// Check for redirect in query param
-				var redirect = $location.search().redirect;
-				if (redirect) {
-					return $location.path(redirect);
-				}
+				redirectHandler.handle();
 
 				// Logged in, redirect to home
 				$location.path('/');

@@ -1,0 +1,23 @@
+.select-box-wrapper {
+	border: 4px solid #ccc;
+}
+
+.select-box-button {
+	@extend .fa, .fa-user;
+
+	font-size: 2em;
+}
+
+.select-box-text {
+	&.primary {
+		font-size: 1.25em;
+	}
+}
+
+.select-box-header {
+	margin-bottom: 2em;
+	text-align: center;
+}
+
+.client {
+}

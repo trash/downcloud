@@ -28,9 +28,9 @@ module.exports = function ($routeProvider) {
 		controller: 'HomeArtistCtrl',
 		authenticate: true
 	})
-	.when('/home/buyer', {
-		templateUrl: 'partials/home-buyer',
-		controller: 'HomeBuyerCtrl',
+	.when('/home/client', {
+		templateUrl: 'partials/home-client',
+		controller: 'HomeClientCtrl',
 		authenticate: true
 	})
 	.when('/login', {
@@ -40,6 +40,16 @@ module.exports = function ($routeProvider) {
 	})
 	.when('/signup', {
 		templateUrl: 'partials/signup',
+		controller: 'SignupCtrl',
+		handleLoggedInUser: true
+	})
+	.when('/signup/client', {
+		templateUrl: 'partials/signup-client',
+		controller: 'SignupCtrl',
+		handleLoggedInUser: true
+	})
+	.when('/signup/artist', {
+		templateUrl: 'partials/signup-artist',
 		controller: 'SignupCtrl',
 		handleLoggedInUser: true
 	})

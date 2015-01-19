@@ -2,9 +2,9 @@
 
 angular.module('findieApp')
 .controller('SignupCtrl', [
-	'$scope', 'users', '$location', 'alerts',
+	'$scope', 'users', '$location', 'alerts', 'redirectHandler',
 function (
-	$scope, users, $location, alerts
+	$scope, users, $location, alerts, redirectHandler
 ) {
 	$scope.user = {};
 	$scope.errors = {};
@@ -26,12 +26,13 @@ function (
 				password: $scope.user.password,
 				username: $scope.user.username
 			}).then(function () {
-				// Account created, redirect to home
-				$location.path('/settings');
 				alerts.add({
-					message: 'Your account has been successfully created. Feel free to fill out the rest of your profile now.',
-					class: 'alert-info'
+					message: 'Your account has been successfully created.',
+					class: 'alert-info',
+					autoClose: true
 				});
+
+				redirectHandler.handle();
 			}).catch(function (err) {
 				err = err.data;
 				$scope.errors = {};
