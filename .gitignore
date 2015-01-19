@@ -7,3 +7,4 @@ heroku
 /views
 dist
 app/build
+.DS_Store
