@@ -17,10 +17,12 @@ function (
 				email: $scope.user.email,
 				password: $scope.user.password
 			}).then(function () {
-				redirectHandler.handle();
+				var redirected = redirectHandler.handle();
 
-				// Logged in, redirect to home
-				$location.path('/');
+				if (!redirected) {
+					// Logged in, redirect to home
+					$location.path('/');
+				}
 			}).catch(function (err) {
 				err = err.data;
 				$scope.errors.other = err.message;

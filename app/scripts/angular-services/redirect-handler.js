@@ -8,7 +8,10 @@ angular.module('findieApp')
 		// If it exists, clear it from query params and follow it
 		if (redirect) {
 			$location.search('redirect', null);
-			return $location.path(redirect);
+			$location.path(redirect);
+			return true;
 		}
+
+		return false;
 	};
 }]);
