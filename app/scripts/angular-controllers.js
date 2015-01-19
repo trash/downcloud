@@ -5,3 +5,5 @@ require('./controllers/navbar');
 require('./controllers/settings-password');
 require('./controllers/settings');
 require('./controllers/signup');
+require('./controllers/home-artist');
+require('./controllers/home-buyer');

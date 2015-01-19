@@ -9,7 +9,8 @@ function (
 
 	$scope.menu = [{
 		title: 'Home',
-		link: '/'
+		link: '/home',
+		mustBeLoggedIn: true
 	}, {
 		title: 'Settings',
 		link: '/settings',

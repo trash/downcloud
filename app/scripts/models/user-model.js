@@ -9,10 +9,8 @@ var UserModel = Model.extend({
 		username: 'string',
 		name: 'string',
 		email: 'string',
-		jobType: 'string',
+		accountType: 'string',
 		location: 'string',
-		averagePastPay: 'string', // Not sure if 'string' is the right type. Maybe int with a per project/hour/whatever field?
-		currentExpectedPay: 'string', // Same as above.
 		availability: {
 			time: 'string',
 			employed: 'string'

@@ -68,20 +68,6 @@
 				</p>
 			</div>
 			<div class="form-group">
-				<label>Job Type</label>
-
-				<!-- <input type="text" name="jobType" class="form-control" ng-model="user.jobType" /> -->
-				<select name="jobType" ng-model="user.jobType" class="form-control">
-					<option selected="selected" default value="">Select your job type</option>
-					<option value="artist">Artist</option>
-					<option value="composer">Composer</option>
-					<option value="programmer">Programmer</option>
-				</select>
-				<p class="help-block" ng-show="form.jobType.$error.mongoose">
-					{{ errors.other }}
-				</p>
-			</div>
-			<div class="form-group">
 				<label>Bio</label>
 
 				<textarea type="text" name="bio" class="form-control" ng-model="user.bio" />

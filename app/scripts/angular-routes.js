@@ -2,7 +2,36 @@
 module.exports = function ($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'partials/main',
-		controller: 'MainCtrl'
+		controller: 'MainCtrl',
+		resolve: {
+			// Redirect logged in users to their home page
+			redirectLoggedInUser: function ($location, User) {
+				if (User.isLoggedIn()) {
+					$location.path('/home');
+				}
+			}
+		}
+	})
+	.when('/home', {
+		authenticate: true,
+		resolve: {
+			redirectToHome: function ($location, $rootScope) {
+				if (!$rootScope.currentUser) {
+					return;
+				}
+				$location.path('/home/' + $rootScope.currentUser.get('accountType'));
+			}
+		}
+	})
+	.when('/home/artist', {
+		templateUrl: 'partials/home-artist',
+		controller: 'HomeArtistCtrl',
+		authenticate: true
+	})
+	.when('/home/buyer', {
+		templateUrl: 'partials/home-buyer',
+		controller: 'HomeBuyerCtrl',
+		authenticate: true
 	})
 	.when('/login', {
 		templateUrl: 'partials/login',
