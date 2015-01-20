@@ -10,10 +10,28 @@ function (
 	$scope.menu = [{
 		title: 'Home',
 		link: '/home',
-		mustBeLoggedIn: true
+		mustBeLoggedIn: true,
+		partialMatching: true
+	}, {
+		title: 'Browse Art',
+		link: '/art'
+	}, {
+		title: 'Browse Bounties',
+		link: '/bounties'
+	}, {
+		title: 'Post Bounty',
+		link: '/bounties/new',
+		authenticate: true,
+		accountType: 'client'
+	}, {
+		title: 'Sell Art',
+		link: '/art/sell',
+		authenticate: true,
+		accountType: 'artist'
 	}, {
 		title: 'Settings',
 		link: '/settings',
+		partialMatching: true,
 		mustBeLoggedIn: true
 	}, {
 		title: 'Profile',
@@ -47,7 +65,7 @@ function (
 			// Exact match or
 			route === path ||
 			// It's a partial match i.e. /settings/password matches /settings (ignore '/') 
-			(route.length > 1 && path.indexOf(route) !== -1)) {
+			(item.partialMatching && route.length > 1 && path.indexOf(route) !== -1)) {
 			return true;
 		}
 		return false;

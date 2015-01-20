@@ -87,32 +87,28 @@ module.exports = function ($routeProvider) {
 	// Bounties
 	//
 	.when('/bounties', {
-		templateUrl: 'partials/bounties',
-		authenticate: true,
+		templateUrl: 'partials/bounties'
 	})
 	.when('/bounties/new', {
 		templateUrl: 'partials/new-bounty',
 		authenticate: true,
 	})
 	.when('/bounties/:bountyId', {
-		templateUrl: 'partials/bounty',
-		authenticate: true
+		templateUrl: 'partials/bounty'
 	})
 
 	//
 	// Art
 	//
 	.when('/art', {
-		templateUrl: 'partials/art-list',
-		authenticate: true,
+		templateUrl: 'partials/art-list'
 	})
 	.when('/art/sell', {
 		templateUrl: 'partials/art-sell',
 		authenticate: true,
 	})
 	.when('/art/:artId', {
-		templateUrl: 'partials/art',
-		authenticate: true
+		templateUrl: 'partials/art'
 	})
 
 	//
