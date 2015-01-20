@@ -1,5 +1,5 @@
 'use strict';
-module.exports = ['$routeProvider', function ($routeProvider) {
+module.exports = function ($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'partials/main',
 		controller: 'MainCtrl',
@@ -102,4 +102,4 @@ module.exports = ['$routeProvider', function ($routeProvider) {
 	.otherwise({
 		templateUrl: 'partials/404'
 	});
-}];
+};
