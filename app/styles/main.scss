@@ -19,6 +19,13 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 	}
 }
 
+.main-info {
+	background: transparent;
+}
+.main-info-block div:first-child {
+	border-right: 2px solid #eee;
+}
+
 .main-header {
 	text-align: center;
 	color: #fff;

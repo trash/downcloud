@@ -2,7 +2,7 @@
 
 angular.module('findieApp')
 
-.directive('mongooseError', function () {
+.directive('mongooseError', [function () {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -12,4 +12,4 @@ angular.module('findieApp')
 			});
 		}]
 	};
-});
+}]);

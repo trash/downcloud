@@ -12,6 +12,9 @@ module.exports = function ($routeProvider) {
 			}
 		}
 	})
+	//
+	// Home
+	//
 	.when('/home', {
 		authenticate: true,
 		resolve: {
@@ -33,6 +36,10 @@ module.exports = function ($routeProvider) {
 		controller: 'HomeClientCtrl',
 		authenticate: true
 	})
+
+	//
+	// Login/Signup
+	//
 	.when('/login', {
 		templateUrl: 'partials/login',
 		controller: 'LoginCtrl',
@@ -53,6 +60,10 @@ module.exports = function ($routeProvider) {
 		controller: 'SignupCtrl',
 		handleLoggedInUser: true
 	})
+
+	//
+	// Settings
+	//
 	.when('/settings', {
 		templateUrl: 'partials/settings',
 		controller: 'SettingsCtrl',
@@ -63,6 +74,7 @@ module.exports = function ($routeProvider) {
 		controller: 'SettingsPasswordCtrl',
 		authenticate: true
 	})
+
 	.when('/profile', {
 		authenticate: true,
 		resolve: {
@@ -71,6 +83,9 @@ module.exports = function ($routeProvider) {
 			}]
 		}
 	})
+	//
+	// Bounties
+	//
 	.when('/bounties', {
 		templateUrl: 'partials/bounties',
 		authenticate: true,
@@ -83,6 +98,26 @@ module.exports = function ($routeProvider) {
 		templateUrl: 'partials/bounty',
 		authenticate: true
 	})
+
+	//
+	// Art
+	//
+	.when('/art', {
+		templateUrl: 'partials/art-list',
+		authenticate: true,
+	})
+	.when('/art/sell', {
+		templateUrl: 'partials/art-sell',
+		authenticate: true,
+	})
+	.when('/art/:artId', {
+		templateUrl: 'partials/art',
+		authenticate: true
+	})
+
+	//
+	// Profiles
+	//
 	.when('/u/:username', {
 		templateUrl: 'partials/profile',
 		controller: 'FindiePageCtrl',

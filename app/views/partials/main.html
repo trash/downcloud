@@ -5,23 +5,40 @@
 			<h1 class="main-header-text">Findie</h1>
 		</div>
 		<ul class="nav nav-tabs">
-			<li role="presentation" ng-class="{'active': tab===1}" ng-click="tab = 1;"><a href="#">For Developers</a></li>
+			<li role="presentation" ng-class="{'active': tab===1}" ng-click="tab = 1;"><a href="#">For Clients</a></li>
 			<li role="presentation" ng-class="{'active': tab===2}" ng-click="tab = 2;"><a href="#">For Artists</a></li>
 		</ul>
 		<div class="tab-content">
 			<div class="slide-panel-container-outer">
 				<div class="slide-panel-container-inner" ng-class="{'right': tab===2}">
 					<div class="slide-panel">
-						<div class="jumbotron">
-							<p>Whether you need a full tile set and a long list of sprites or just a single character sprite for your game, we got you covered.</p>
-							<p>Easily create a listing for your desired job with your specs, budget, and conditions and we’ll get you hooked up with an artist in no time.</p>
-							<p><a class="btn btn-primary btn-lg" href="/signup/client?redirect=/bounties/new" role="button">Post a bounty</a></p>
+						<div class="jumbotron main-info">
+							<div class="row main-info-block">
+								<div class="col-sm-6">
+									<p>Whether you need a full tile set and a long list of sprites or just a single character sprite for your game, we got you covered.</p>
+									<p>Easily create a listing for your desired job with your specs, budget, and conditions and we’ll get you hooked up with an artist in no time.</p>
+									<p><a class="btn btn-primary btn-lg" href="/signup/client?redirect=/bounties/new" role="button">Post a bounty</a></p>
+								</div>
+								<div class="col-sm-6">
+									<p>Or perhaps you'd like to see whats already available.</p>
+									<p>Browse our list of popular artists and their art to see what's for sale.</p>
+									<p><a class="btn btn-success btn-lg" href="/signup/client?redirect=/art" role="button">Browse art</a></p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="slide-panel">
-						<div class="jumbotron">
-							<p>Whether you’re a freelance artist looking for more work or a hobbyist looking for a new challenge, we’re here to help you find some cool stuff to work on and get paid in the process.</p>
-							<p><a class="btn btn-primary btn-lg" href="/signup/artist?redirect=/bounties" role="button">Find a bounty</a></p>
+						<div class="jumbotron main-info">
+							<div class="row main-info-block">
+								<div class="col-sm-6">
+									<p>Whether you’re a freelance artist looking for more work or a hobbyist looking for a new challenge, we’re here to help you find some cool stuff to work on and get paid in the process.</p>
+									<p><a class="btn btn-primary btn-lg" href="/signup/artist?redirect=/bounties" role="button">Find a bounty</a></p>
+								</div>
+								<div class="col-sm-6">
+									<p>Or perhaps you already have already that you're looking to sell on our marketplace. We can help with that too!</p>
+									<p><a class="btn btn-success btn-lg" href="/signup/client?redirect=/art/sell" role="button">Sell your art</a></p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
