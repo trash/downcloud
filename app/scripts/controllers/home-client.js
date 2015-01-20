@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('HomeClientCtrl', function ($scope) {
-});
+.controller('HomeClientCtrl', [function () {
+}]);

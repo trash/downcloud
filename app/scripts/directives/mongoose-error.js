@@ -6,10 +6,10 @@ angular.module('findieApp')
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function(scope, element, attrs, ngModel) {
+		link: ['scope', 'element', 'attrs', 'ngModel', function (scope, element, attrs, ngModel) {
 			element.on('keydown', function () {
 				return ngModel.$setValidity('mongoose', true);
 			});
-		}
+		}]
 	};
 });

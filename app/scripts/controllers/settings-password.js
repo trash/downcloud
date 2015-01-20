@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('findieApp')
-.controller('SettingsPasswordCtrl', function ($scope, User, alerts) {
+.controller('SettingsPasswordCtrl', ['$scope', 'User', 'alerts', function ($scope, User, alerts) {
 	$scope.errors = {};
 
 	$scope.user = $scope.currentUser;
@@ -24,4 +24,4 @@ angular.module('findieApp')
 			});
 		}
 	};
-});
+}]);
