@@ -1,6 +1,7 @@
 require('./controllers/profile');
 require('./controllers/login');
 require('./controllers/main');
+require('./controllers/art');
 require('./controllers/navbar');
 require('./controllers/settings-password');
 require('./controllers/settings');

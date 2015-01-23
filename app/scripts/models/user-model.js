@@ -1,7 +1,8 @@
 'use strict';
 
 var Model = require('ampersand-model'),
-	SocialLinkCollection = require('./social-link-collection');
+	SocialLinkCollection = require('./social-link-collection'),
+	ArtworkCollection = require('./artwork-collection');
 
 var UserModel = Model.extend({
 	idAttribute: '_id',
@@ -29,7 +30,8 @@ var UserModel = Model.extend({
 		// google: {},
 	},
 	collections: {
-		socialLinks: SocialLinkCollection
+		socialLinks: SocialLinkCollection,
+		art: ArtworkCollection
 	},
 	// Fix the url for the social links which is based off the user
 	initialize: function () {

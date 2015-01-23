@@ -101,7 +101,13 @@ module.exports = function ($routeProvider) {
 	// Art
 	//
 	.when('/art', {
-		templateUrl: 'partials/art-list'
+		templateUrl: 'partials/art-list',
+		controller: 'ArtCtrl',
+		resolve: {
+			art: ['Art', function (Art) {
+				return Art.getAll();
+			}]
+		}
 	})
 	.when('/art/sell', {
 		templateUrl: 'partials/art-sell',
