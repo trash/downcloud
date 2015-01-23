@@ -48,6 +48,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 	font-size: 1em;
 	position: relative;
 }
+
+.profile-picture-label {
+	display: block;
+}
  
 .profile-picture {
 	border: 2px solid #ccc;
@@ -58,6 +62,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 .profile-picture-upload {
 	cursor: pointer;
+	display: inline-block;
 }
 
 .tab-content {

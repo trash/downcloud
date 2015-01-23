@@ -111,6 +111,7 @@ module.exports = function ($routeProvider) {
 	})
 	.when('/art/sell', {
 		templateUrl: 'partials/art-sell',
+		controller: 'ArtSellCtrl',
 		authenticate: true,
 	})
 	.when('/art/:artId', {

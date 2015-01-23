@@ -2,9 +2,9 @@
 
 angular.module('findieApp')
 .controller('SettingsCtrl', [
-	'$scope', 'User', '$http',
+	'$scope', 'User', '$http', '$timeout',
 function (
-	$scope, User, $http
+	$scope, User, $http, $timeout
 ) {
 	$scope.errors = {};
 
@@ -23,23 +23,13 @@ function (
 
 	$scope.uploadUrl = '/api/users/' + $scope.user.username + '/profile-picture';
 
-	$scope.uploadPicture = function (picture) {
-		// $scope.submitted = true;
-
-		var fd = new FormData();
-		//Take the first selected file
-		fd.append('picture', picture);
-
-		console.log(picture, fd);
-
-		$http({
-			method: 'POST',
-			url: $scope.actionUrl,
-			data: fd,
-			headers: {'Content-Type': undefined },
-			transformRequest: angular.identity
-		}).then(function (response) {
-			console.log(response);
+	$scope.uploadSuccess = function () {
+		$scope.$apply(function () {
+			var oldUsername = $scope.user.username;
+			$scope.user.username += 'lol';
+			$timeout(function () {
+				$scope.user.username = oldUsername;
+			}, 250);
 		});
 	};
 }]);

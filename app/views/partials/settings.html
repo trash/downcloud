@@ -9,12 +9,12 @@
 </div>
 <div class="row settings-section">
 	<div class="col-sm-7">
-		<div flow-init="{ target: uploadUrl, testChunks: false }" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
+		<div flow-init="{ target: uploadUrl, testChunks: false }" flow-files-submitted="$flow.upload()" flow-file-success="uploadSuccess()">
 			<div class="form-group">
-				<label>Profile Picture</label>
+				<label class="profile-picture-label">Profile Picture</label>
 				<span class="profile-picture-upload" flow-btn>
-				<img class="profile-picture form-control" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
-			</span>
+					<img class="profile-picture form-control" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
+				</span>
 			</div>
 		</div>
 		<form class="form" name="form" ng-submit="updateProfile(form)" novalidate>

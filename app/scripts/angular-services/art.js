@@ -9,6 +9,11 @@ angular.module('findieApp')
 function (
 	$q
 ) {
+	/**
+	 * Get all the art from the art end point
+	 *
+	 * @return {promise} Angular $q promise that resolves to the collection returned
+	 */
 	this.getAll = function () {
 		var deferred = $q.defer(),
 			art = new ArtworkCollection();

@@ -1,3 +1,18 @@
 <div class="col-sm-12">
 	<h1>Sell art view</h1>
+	<form class="" ng-submit="submitArt()">
+		 <div class="form-group">
+			<label for="title">Title</label>
+			<input class="form-control" name="title" placeholder="Title of artwork" ng-model="art.title" />
+			<div flow-init="{ target: uploadUrl, testChunks: false }" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
+				<div class="form-group">
+					<label class="profile-picture-label">Artwork Image</label>
+					<span class="profile-picture-upload" flow-btn>
+						<img class="profile-picture form-control" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
+					</span>
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-lg btn-primary" type="submit">Save</button>
+	</form>
 </div>
