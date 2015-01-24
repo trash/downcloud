@@ -26,16 +26,6 @@ module.exports = function ($routeProvider) {
 			}
 		}
 	})
-	.when('/home/artist', {
-		templateUrl: 'partials/home-artist',
-		controller: 'HomeArtistCtrl',
-		authenticate: true
-	})
-	.when('/home/client', {
-		templateUrl: 'partials/home-client',
-		controller: 'HomeClientCtrl',
-		authenticate: true
-	})
 
 	//
 	// Login/Signup
@@ -82,56 +72,6 @@ module.exports = function ($routeProvider) {
 				$location.path('/u/' + User.user.username);
 			}]
 		}
-	})
-	//
-	// Bounties
-	//
-	.when('/bounties', {
-		templateUrl: 'partials/bounties'
-	})
-	.when('/bounties/new', {
-		templateUrl: 'partials/new-bounty',
-		authenticate: true,
-	})
-	.when('/bounties/:bountyId', {
-		templateUrl: 'partials/bounty'
-	})
-
-	//
-	// Art
-	//
-	.when('/art', {
-		templateUrl: 'partials/art-list',
-		controller: 'ArtCtrl',
-		resolve: {
-			art: ['Art', function (Art) {
-				return Art.getAll();
-			}]
-		}
-	})
-	.when('/art/sell', {
-		templateUrl: 'partials/art-sell',
-		controller: 'ArtSellCtrl',
-		authenticate: true,
-		resolve: {
-			artwork: ['$q', function ($q) {
-				var ArtworkModel = require('./models/artwork-model');
-
-				var artwork = new ArtworkModel(),
-					deferred = $q.defer();
-
-				artwork.save(null, {
-					success: function () {
-						deferred.resolve(artwork);
-					}
-				});
-
-				return deferred.promise;
-			}]
-		}
-	})
-	.when('/art/:artId', {
-		templateUrl: 'partials/art'
 	})
 
 	//

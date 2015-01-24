@@ -2,7 +2,7 @@
 
 var angularRoutes = require('./angular-routes');
 
-angular.module('findieApp', [
+angular.module('downcloudApp', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',

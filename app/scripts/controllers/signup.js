@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('SignupCtrl', [
 	'$scope', 'users', '$location', 'alerts', 'redirectHandler',
 function (

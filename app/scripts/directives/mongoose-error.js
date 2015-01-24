@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 
 .directive('mongooseError', [function () {
 	return {

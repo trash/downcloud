@@ -3,7 +3,7 @@
 var UserModel = require('../models/user-model'),
 	util = require('../services/util');
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 
 .service('User',[
 	'$http', '$rootScope', '$resource', '$cookieStore', 'alerts',

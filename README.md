@@ -10,7 +10,7 @@
 #### "Installing" the App
 You'll only need to do this once.
 
-1. git clone the repo (`$ git clone git@github.com:khalilravanna/findie.git`)
+1. git clone the repo (`$ git clone git@github.com:khalilravanna/downcloud.git`)
 2. cd into the repo
 3. `$ npm install`
 4. `$ bower install` / `$ bower update`
@@ -25,11 +25,11 @@ You'll do this every time you want to start the app.
 
 #### Prerequisites
 1. [Heroku toolbelt](https://toolbelt.heroku.com/)
-2. Heroku permissions and stuff set up. Head on over [here for that](https://dashboard-next.heroku.com/apps/findie/code). It'll prolly tell you do `$ heroku login` and some other stuff. You should do that.
+2. Heroku permissions and stuff set up. Head on over [here for that](https://dashboard-next.heroku.com/apps/downcloud/code). It'll prolly tell you do `$ heroku login` and some other stuff. You should do that.
 
 #### First Time Setup
 1. From the main repo directory run `$ grunt heroku`. This will build everything into a directory insdie the main directory called `dist`.
-2. Next we need to hook up this build directory, `dist`, with the heroku repo. To do this, first `cd` into `dist` and then run `$ git init`. This initializes a new git repo just for pushing to heroku. Hook it up to heroku by adding heroku as a remote `$ git remote add heroku git@heroku.com:findie.git`.
+2. Next we need to hook up this build directory, `dist`, with the heroku repo. To do this, first `cd` into `dist` and then run `$ git init`. This initializes a new git repo just for pushing to heroku. Hook it up to heroku by adding heroku as a remote `$ git remote add heroku git@heroku.com:downcloud.git`.
 3. Add our build stuff and commit it. `$ git add -A` and `$ git commit -m "V 1.33.7 push"`.
 4. Now we're ready to push to heroku. Just run `$ git push heroku master`.
 

@@ -2,7 +2,7 @@
 
 var ArtworkCollection = require('../models/artwork-collection');
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 
 .service('Art',[
 	'$q',

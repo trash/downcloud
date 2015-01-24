@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('HomeArtistCtrl', [function () {
 }]);

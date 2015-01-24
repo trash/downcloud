@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('FindiePageCtrl', ['$scope', 'user', function ($scope, user) {
 	$scope.user = user;
 }]);

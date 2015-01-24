@@ -1,5 +1,5 @@
 {
-  "name": "findie",
+  "name": "downcloud",
   "version": "0.0.0",
   "dependencies": {
     "ampersand-model": "^4.0.3",

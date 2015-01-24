@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('SettingsCtrl', [
 	'$scope', 'User', '$http', '$timeout',
 function (

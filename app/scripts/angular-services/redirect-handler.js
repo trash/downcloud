@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .service('redirectHandler', ['$location', function ($location) {
 	this.handle = function () {
 		// Check for redirect in query param

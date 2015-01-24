@@ -1,33 +1,18 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('NavbarCtrl', [
-	'$scope', '$location', 'User',
+	'$scope', '$location', 'User', 'soundcloud',
 function (
-	$scope, $location, User
+	$scope, $location, User, soundcloud
 ) {
+	$scope.soundcloud = soundcloud;
 
 	$scope.menu = [{
 		title: 'Home',
 		link: '/home',
 		mustBeLoggedIn: true,
 		partialMatching: true
-	}, {
-		title: 'Browse Art',
-		link: '/art'
-	}, {
-		title: 'Browse Bounties',
-		link: '/bounties'
-	}, {
-		title: 'Post Bounty',
-		link: '/bounties/new',
-		authenticate: true,
-		accountType: 'client'
-	}, {
-		title: 'Sell Art',
-		link: '/art/sell',
-		authenticate: true,
-		accountType: 'artist'
 	}, {
 		title: 'Settings',
 		link: '/settings',

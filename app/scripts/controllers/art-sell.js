@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('ArtSellCtrl', ['$scope', 'alerts', 'artwork', function ($scope, alerts, artwork) {
 	$scope.artwork = artwork;
 

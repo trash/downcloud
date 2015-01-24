@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 
 .service('alerts',[
 	'$rootScope', '$timeout',

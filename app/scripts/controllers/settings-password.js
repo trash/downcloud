@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('findieApp')
+angular.module('downcloudApp')
 .controller('SettingsPasswordCtrl', ['$scope', 'User', 'alerts', function ($scope, User, alerts) {
 	$scope.errors = {};
 
