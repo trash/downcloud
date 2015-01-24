@@ -1,18 +1,25 @@
 'use strict';
 
-var ArtworkModel = require('../models/artwork-model');
-
 angular.module('findieApp')
-.controller('ArtSellCtrl', ['$scope', function ($scope) {
-	$scope.artwork = new ArtworkModel();
+.controller('ArtSellCtrl', ['$scope', 'alerts', 'artwork', function ($scope, alerts, artwork) {
+	$scope.artwork = artwork;
 
 	$scope.submitArt = function () {
 		$scope.artwork.save(null, {
 			success: function (model, response) {
 				console.log('success', model, response);
+				alerts.add({
+					message: 'Artwork successfully created.',
+					class: 'alert-success',
+					autoClose: true
+				});
 			},
 			error: function (model, response) {
-				console.log('error', response);
+				console.log(response);
+				alerts.add({
+					message: 'Error creating artwork.',
+					class: 'alert-danger'
+				});
 			}
 		});
 	};

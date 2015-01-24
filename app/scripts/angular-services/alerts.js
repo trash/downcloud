@@ -18,6 +18,7 @@ function (
 	this.add = function (options) {
 		var alert = new Alert(options);
 		this.list.push(alert);
+		$rootScope.$apply();
 
 		// Close the alert automatically in 2 seconds
 		if (alert.autoClose) {

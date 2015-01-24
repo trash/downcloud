@@ -113,6 +113,22 @@ module.exports = function ($routeProvider) {
 		templateUrl: 'partials/art-sell',
 		controller: 'ArtSellCtrl',
 		authenticate: true,
+		resolve: {
+			artwork: ['$q', function ($q) {
+				var ArtworkModel = require('./models/artwork-model');
+
+				var artwork = new ArtworkModel(),
+					deferred = $q.defer();
+
+				artwork.save(null, {
+					success: function () {
+						deferred.resolve(artwork);
+					}
+				});
+
+				return deferred.promise;
+			}]
+		}
 	})
 	.when('/art/:artId', {
 		templateUrl: 'partials/art'
