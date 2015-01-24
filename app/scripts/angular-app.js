@@ -24,7 +24,7 @@ function (
 		return {
 			responseError: function (response) {
 				if (response.status === 401) {
-					$location.path('/login');
+					$location.path('/');
 					return $q.reject(response);
 				}
 				else {

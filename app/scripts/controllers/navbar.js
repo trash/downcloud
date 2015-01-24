@@ -33,7 +33,7 @@ function (
 	
 	$scope.logout = function() {
 		User.logout().then(function () {
-			$location.path('/login');
+			$location.path('/');
 		});
 	};
 	

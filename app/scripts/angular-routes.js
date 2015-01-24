@@ -24,11 +24,6 @@ module.exports = function ($routeProvider) {
 	//
 	// Login/Signup
 	//
-	.when('/login', {
-		templateUrl: 'partials/login',
-		controller: 'LoginCtrl',
-		handleLoggedInUser: true
-	})
 	.when('/signup', {
 		templateUrl: 'partials/signup',
 		controller: 'SignupCtrl',
@@ -51,11 +46,6 @@ module.exports = function ($routeProvider) {
 	.when('/settings', {
 		templateUrl: 'partials/settings',
 		controller: 'SettingsCtrl',
-		authenticate: true
-	})
-	.when('/settings/password', {
-		templateUrl: 'partials/settings-password',
-		controller: 'SettingsPasswordCtrl',
 		authenticate: true
 	})
 

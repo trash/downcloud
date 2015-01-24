@@ -7,6 +7,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 		'signup',
 		'notifications';
 
+$soundcloudOrange: #FF5500;
+
 .footer {
 	bottom: 0;
 	width: 100%;
@@ -17,6 +19,11 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 	p {
 		margin: 20px 0;
 	}
+}
+
+.soundcloud-button {
+	background: $soundcloudOrange;
+	color: #fff;
 }
 
 .main-info {
