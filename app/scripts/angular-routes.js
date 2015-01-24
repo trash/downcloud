@@ -5,11 +5,11 @@ module.exports = function ($routeProvider) {
 		controller: 'MainCtrl',
 		resolve: {
 			// Redirect logged in users to their home page
-			redirectLoggedInUser: function ($location, User) {
+			redirectLoggedInUser: ['$location', 'User', function ($location, User) {
 				if (User.isLoggedIn()) {
 					$location.path('/home');
 				}
-			}
+			}]
 		}
 	})
 	//
