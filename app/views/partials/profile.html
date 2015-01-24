@@ -1,34 +1,21 @@
 <div class="row">
 	<div ng-if="user" class="col-sm-12">
-		<img class="profile-picture" ng-src="/api/users/{{ user.username }}/profile-picture" alt="...">
+		<img class="profile-picture" ng-src="{{ user.get('avatar_url') }}" alt="...">
 		<div class="form-group">
 			<label>Username</label>
-			<p>{{ user.username }}</p>
+			<p>{{ user.get('username') }}</p>
 		</div>
 		<div class="form-group">
-			<label>Name</label>
-			<p>{{ user.name }}</p>
+			<label>City</label>
+			<p>{{ user.get('city') }}</p>
 		</div>
 		<div class="form-group">
-			<label>Email</label>
-			<p>{{ user.email }}</p>
+			<label>Country</label>
+			<p>{{ user.get('country') }}</p>
 		</div>
 		<div class="form-group">
-			<label>Availability</label>
-			<p>{{ user.availability.employed }}</p>
-			<p>{{ user.availability.time }}</p>
-		</div>
-		<div class="form-group">
-			<label>Account Type</label>
-			<p>{{ user.accountType }}</p>
-		</div>
-		<div class="form-group">
-			<label>Bio</label>
-			<p>{{ user.bio }}</p>
-		</div>
-		<div class="form-group">
-			<label>Location</label>
-			<p>{{ user.location }}</p>
+			<label>Descriptions</label>
+			<p>{{ user.get('description') }}</p>
 		</div>
 	</div>
 	<div ng-if="!user" ng-include="'partials/404.html'"></div>

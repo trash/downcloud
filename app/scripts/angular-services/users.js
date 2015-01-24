@@ -1,5 +1,7 @@
 'use strict';
 
+var UserModel = require('../models/user-model');
+
 angular.module('downcloudApp')
 
 .service('users',[
@@ -16,7 +18,7 @@ function (
 	 */
 	this.get = function (username) {
 		return $http.get(usersPath + username).then(function (response) {
-			return response.data;
+			return new UserModel(response.data);
 		}, function () {
 			return null;
 		});
