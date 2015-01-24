@@ -63,7 +63,7 @@ module.exports = function ($routeProvider) {
 		authenticate: true,
 		resolve: {
 			redirect: ['$location', 'User', function ($location, User) {
-				$location.path('/u/' + User.user.username);
+				$location.path('/u/' + User.user.get('username'));
 			}]
 		}
 	})

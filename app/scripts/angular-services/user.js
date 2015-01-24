@@ -34,6 +34,7 @@ function (
 
 	UserSingleton.prototype.normalizeSoundcloudAttributes = function (user) {
 		var modifiedUser = angular.extend({}, user);
+
 		modifiedUser.soundcloudId = modifiedUser.id;
 		delete modifiedUser.id;
 		return modifiedUser;
