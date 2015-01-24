@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('findieApp')
-.controller('ArtSellCtrl', ['$scope', '$http', function ($scope, $http) {
-	$scope.artwork = {};
+var ArtworkModel = require('../models/artwork-model');
 
-	$scope.submitArt = function (form) {
-		// should really be using the ampersand model and calling save
-		$http({
-			url: '/api/art',
-			method: 'POST',
-			data: $scope.artwork
-		}).then(function () {
-			console.log('success', arguments);
-		}, function () {
-			console.log('error', arguments);
+angular.module('findieApp')
+.controller('ArtSellCtrl', ['$scope', function ($scope) {
+	$scope.artwork = new ArtworkModel();
+
+	$scope.submitArt = function () {
+		$scope.artwork.save(null, {
+			success: function (model, response) {
+				console.log('success', model, response);
+			},
+			error: function (model, response) {
+				console.log('error', response);
+			}
 		});
 	};
 }]);
