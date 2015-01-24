@@ -15,11 +15,6 @@
 					<a ng-hide="item.mustBeLoggedIn && !currentUser || (item.accountType && item.accountType !== currentUser.accountType)" ng-href="{{ item.link }}">{{ item.title }}</a>
 				</li>
 				<li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="" ng-click="soundcloud.login()">Login</a></li>
-				<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}">
-					<a href="/signup">
-						Sign up
-					</a>
-				</li>
 				<li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
 			</ul>
 		</div>

@@ -32,6 +32,13 @@ function (
 		return this.user;
 	};
 
+	UserSingleton.prototype.normalizeSoundcloudAttributes = function (user) {
+		var modifiedUser = angular.extend({}, user);
+		modifiedUser.soundcloudId = modifiedUser.id;
+		delete modifiedUser.id;
+		return modifiedUser;
+	};
+
 	/**
 	 * Logs the user into the session service
 	 *
@@ -45,6 +52,7 @@ function (
 	 */
 	UserSingleton.prototype.login = function (credentials) {
 		return userSession.save(credentials, function (user) {
+			user = this.normalizeSoundcloudAttributes(user);
 			this.updateUser(user);
 		}.bind(this)).$promise;
 	};

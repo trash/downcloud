@@ -17,14 +17,8 @@ module.exports = function ($routeProvider) {
 	//
 	.when('/home', {
 		authenticate: true,
-		resolve: {
-			redirectToHome: function ($location, $rootScope) {
-				if (!$rootScope.currentUser) {
-					return;
-				}
-				$location.path('/home/' + $rootScope.currentUser.get('accountType'));
-			}
-		}
+		controller: 'HomeCtrl',
+		templateUrl: 'partials/home'
 	})
 
 	//
