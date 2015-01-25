@@ -54,6 +54,29 @@ function (
 		return deferred.promise;
 	};
 
+	this.createNewArtist = function (artist, tracks) {
+		var deferred = $q.defer();
+
+		// Pull this out into a service method
+		var modifiedArtist = angular.extend({}, artist);
+		modifiedArtist.soundcloudId = artist.id;
+		delete modifiedArtist.id;
+
+		modifiedArtist.tracks = tracks;
+
+		// They don't exist we need to create them
+		$http({
+			url: '/api/artists',
+			method: 'POST',
+			data: modifiedArtist
+		}).then(function (response) {
+			console.log('created a new artist');
+			deferred.resolve(response.data);
+		});
+
+		return deferred.promise;
+	};
+
 	this.getTracksForArtist = function (artist, options) {
 		var deferred = $q.defer();
 
@@ -64,20 +87,15 @@ function (
 			console.log(response);
 			deferred.resolve(response);
 		}, function () {
-			// Pull this out into a service method
-			var modifiedArtist = angular.extend({}, artist);
-			modifiedArtist.soundcloudId = artist.id;
-			delete modifiedArtist.id;
-
-			// They don't exist we need to create them
-			$http({
-				url: '/api/artists',
-				method: 'POST',
-				data: modifiedArtist
-			}).then(function () {
-				console.log('created a new artist');
-			});
-		});
+			console.log('artist not found. lets get their tracks and create them');
+			this.getDownloadableTracksForArtist(artist.id).then(function (tracks) {
+				console.log('tracks retrieved for new artist, creating new artist', tracks);
+				this.createNewArtist(artist, tracks).then(function (artist) {
+					console.log('created new artist', artist);
+					deferred.resolve(artist);
+				});
+			}.bind(this));
+		}.bind(this));
 
 		return deferred.promise;
 	};
@@ -88,7 +106,7 @@ function (
 
 		options = options || {};
 		var defaultOptions = {
-			'created_at[from]': now.subtract(7, 'day').format('YYYY-MM-DD HH:MM:SS'),
+			// 'created_at[from]': now.subtract(7, 'day').format('YYYY-MM-DD HH:MM:SS'),
 			// Max length of tracks 10 minutes
 			'duration[to]': 10 * 60 * 1000
 		};
@@ -104,7 +122,7 @@ function (
 	this.getDownloadableTracksForArtist = function (artist, options) {
 		var deferred = $q.defer();
 
-		this.getTracksForArtist(artist, options).then(function (tracks) {
+		this.getTracksForArtistFromSoundCloud(artist, options).then(function (tracks) {
 			deferred.resolve(tracks.filter(function (track) {
 				return track.downloadable;
 			}));
