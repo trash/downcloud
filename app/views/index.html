@@ -75,9 +75,24 @@
 
 	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
 	<script>
+		var clientIds = {
+				test: 'e7443dc8e36c5fb773afe6307f73cd3f',
+				prod: 'ed93ccee01162ba360daa46ca6556ef9'
+			},
+			redirectUris = {
+				test: 'http://localhost:9000/auth-redirect',
+				prod: 'http://downcloud.herokuapp.com/auth-redirect'
+			};
+		var clientId = clientIds.test,
+			redirectUri = redirectUris.test;
+		if (window.location.host.indexOf('localhost') === -1) {
+			clientId = clientIds.prod;
+			redirectUri = redirectUris.prod;
+		}
+
 		SC.initialize({
-			client_id: 'ed93ccee01162ba360daa46ca6556ef9',
-			redirect_uri: 'http://downcloud.herokuapp.com/auth-redirect',
+			client_id: clientId,
+			redirect_uri: redirectUri,
 		});
 	</script>
 
