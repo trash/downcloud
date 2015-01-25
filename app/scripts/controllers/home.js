@@ -7,4 +7,12 @@ angular.module('downcloudApp')
 	soundcloud.getAllFollowings().then(function (followings) {
 		$scope.followings = followings;
 	});
+
+	$scope.getTracks = function (following) {
+		console.log(following);
+		soundcloud.getDownloadableTracksForUser(following.id).then(function (tracks) {
+			console.log(tracks);
+			$scope.tracks = tracks;
+		});
+	};
 }]);

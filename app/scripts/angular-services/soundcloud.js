@@ -1,5 +1,7 @@
 'use strict';
 
+var moment = require('moment');
+
 angular.module('downcloudApp')
 
 .service('soundcloud',[
@@ -48,6 +50,37 @@ function (
 				currentOffset += MAX_COUNT;
 			}
 
+
+		return deferred.promise;
+	};
+
+	this.getTracksForUser = function (id, options) {
+		var now = new moment(),
+			deferred = $q.defer();
+
+		options = options || {};
+		var defaultOptions = {
+			'created_at[from]': now.subtract(7, 'day').format('YYYY-MM-DD HH:MM:SS'),
+			// Max length of tracks 10 minutes
+			'duration[to]': 10 * 60 * 1000
+		};
+		options = angular.extend(defaultOptions, options);
+
+		SC.get('/users/' + id + '/tracks', options, function (tracks) {
+			deferred.resolve(tracks);
+		});
+
+		return deferred.promise;
+	};
+
+	this.getDownloadableTracksForUser = function (id, options) {
+		var deferred = $q.defer();
+
+		this.getTracksForUser(id, options).then(function (tracks) {
+			deferred.resolve(tracks.filter(function (track) {
+				return track.downloadable;
+			}));
+		});
 
 		return deferred.promise;
 	};

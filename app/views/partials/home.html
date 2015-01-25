@@ -1,6 +1,8 @@
 <div class="col-sm-12">
 	<h1>Home?</h1>
 	<ul>
-		<li ng-repeat="following in followings">{{ following.username }}</li>
+		<li ng-repeat="following in followings">
+			<a href="" ng-click="getTracks(following)">{{ following.username }}</a>
+		</li>
 	</ul>
 </div>
