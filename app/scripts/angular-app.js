@@ -38,9 +38,9 @@ function (
 	$rootScope.$on('$routeChangeStart', function (event, next) {
 		
 		// Redirect to login if route requires auth and you're not logged in
-		if (next.authenticate && !User.isLoggedIn()) {
-			$location.path('/signup').search('redirect', next.$$route.originalPath);
-		}
+		// if (next.authenticate && !User.isLoggedIn()) {
+		// 	$location.path('/signup').search('redirect', next.$$route.originalPath);
+		// }
 
 		// Redirect to route if they hit /login /signup and are already logged in
 		if (next.handleLoggedInUser && User.isLoggedIn()) {

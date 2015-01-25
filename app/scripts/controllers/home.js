@@ -10,7 +10,7 @@ angular.module('downcloudApp')
 
 	$scope.getTracks = function (following) {
 		console.log(following);
-		soundcloud.getDownloadableTracksForUser(following.id).then(function (tracks) {
+		soundcloud.getDownloadableTracksForArtist(following).then(function (tracks) {
 			console.log(tracks);
 			$scope.tracks = tracks;
 		});

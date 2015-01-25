@@ -5,9 +5,9 @@ var moment = require('moment');
 angular.module('downcloudApp')
 
 .service('soundcloud',[
-	'$rootScope', '$q', 'User',
+	'$rootScope', '$q', 'User', '$http',
 function (
-	$rootScope, $q, User
+	$rootScope, $q, User, $http
 ) {
 	this.login = function () {
 		var deferred = $q.defer();
@@ -54,7 +54,35 @@ function (
 		return deferred.promise;
 	};
 
-	this.getTracksForUser = function (id, options) {
+	this.getTracksForArtist = function (artist, options) {
+		var deferred = $q.defer();
+
+		$http({
+			url: '/api/artists/' + artist.id,
+			method: 'GET'
+		}).then(function (response) {
+			console.log(response);
+			deferred.resolve(response);
+		}, function () {
+			// Pull this out into a service method
+			var modifiedArtist = angular.extend({}, artist);
+			modifiedArtist.soundcloudId = artist.id;
+			delete modifiedArtist.id;
+
+			// They don't exist we need to create them
+			$http({
+				url: '/api/artists',
+				method: 'POST',
+				data: modifiedArtist
+			}).then(function () {
+				console.log('created a new artist');
+			});
+		});
+
+		return deferred.promise;
+	};
+
+	this.getTracksForArtistFromSoundCloud = function (id, options) {
 		var now = new moment(),
 			deferred = $q.defer();
 
@@ -73,10 +101,10 @@ function (
 		return deferred.promise;
 	};
 
-	this.getDownloadableTracksForUser = function (id, options) {
+	this.getDownloadableTracksForArtist = function (artist, options) {
 		var deferred = $q.defer();
 
-		this.getTracksForUser(id, options).then(function (tracks) {
+		this.getTracksForArtist(artist, options).then(function (tracks) {
 			deferred.resolve(tracks.filter(function (track) {
 				return track.downloadable;
 			}));
