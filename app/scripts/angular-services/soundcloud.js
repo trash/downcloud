@@ -24,4 +24,31 @@ function (
 
 		return deferred.promise;
 	};
+
+	this.getAllFollowings = function () {
+		var deferred = $q.defer();
+
+		var total = $rootScope.currentUser.get('followings_count'),
+			followingsLoaded = [],
+			currentOffset = 0,
+			MAX_COUNT = 50;
+
+			for (var i=0; i < Math.ceil(total / MAX_COUNT); i++) {
+				SC.get('/me/followings', {
+					offset: currentOffset
+				}, function (followings) {
+					followingsLoaded = followingsLoaded.concat(followings);
+
+					console.log(followingsLoaded.length, total);
+					if (followingsLoaded.length >= total) {
+						deferred.resolve(followingsLoaded);
+					}
+				});
+
+				currentOffset += MAX_COUNT;
+			}
+
+
+		return deferred.promise;
+	};
 }]);

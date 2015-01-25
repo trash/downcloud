@@ -11,7 +11,7 @@ var UserModel = Model.extend({
 		'first_name': 'string',
 		'last_name': 'string',
 		'full_name': 'string',
-		'following_count': 'number',
+		'followings_count': 'number',
 		'avatar_url': 'string',
 		city: 'string',
 		country: 'string',
