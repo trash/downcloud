@@ -1,5 +1,11 @@
 <div class="col-sm-12">
 	<h1>Home?</h1>
+	<p>Tracks</p>
+	<ul>
+		<li ng-repeat="track in tracks"><a ng-href="{{ track.download_url }}">{{ track.title }}</a></li>
+	</ul>
+	<hr>
+	<p>Artists</p>
 	<ul>
 		<li ng-repeat="following in followings">
 			<a href="" ng-click="getTracks(following)">{{ following.username }}</a>

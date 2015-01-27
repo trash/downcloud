@@ -84,8 +84,7 @@ function (
 			url: '/api/artists/' + artist.id,
 			method: 'GET'
 		}).then(function (response) {
-			console.log(response);
-			deferred.resolve(response);
+			deferred.resolve(response.data);
 		}, function () {
 			console.log('artist not found. lets get their tracks and create them');
 			this.getDownloadableTracksForArtist(artist.id).then(function (tracks) {
