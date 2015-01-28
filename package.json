@@ -31,6 +31,7 @@
     "multiparty": "^4.1.0",
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
+    "passport-soundcloud": "^0.1.2",
     "static-favicon": "~1.0.1",
     "vinyl-source-stream": "^1.0.0"
   },

@@ -7,9 +7,11 @@ angular.module('downcloudApp')
 		restrict: 'A',
 		scope: {},
 		link: function ($scope, $element) {
+
 			var element = $element[0];
 			element.addEventListener('click', function () {
-				soundcloud.login();
+				// soundcloud.login();
+				window.location = '/auth';
 			});
 		}
 	};

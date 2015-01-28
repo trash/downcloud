@@ -1,6 +1,7 @@
 'use strict';
 
 var UserModel = require('../models/user-model'),
+	userHelpers = require('../../../lib/models/user-helpers'),
 	util = require('../services/util');
 
 angular.module('downcloudApp')
@@ -29,16 +30,15 @@ function (
 
 		$rootScope.currentUser = this.user;
 
+		if (this.user) {
+			// Give the SC instance the access token
+			SC.accessToken(this.user.get('accessToken'));
+		}
+
 		return this.user;
 	};
 
-	UserSingleton.prototype.normalizeSoundcloudAttributes = function (user) {
-		var modifiedUser = angular.extend({}, user);
-
-		modifiedUser.soundcloudId = modifiedUser.id;
-		delete modifiedUser.id;
-		return modifiedUser;
-	};
+	UserSingleton.prototype.normalizeSoundcloudAttributes = userHelpers.normalize;
 
 	/**
 	 * Logs the user into the session service

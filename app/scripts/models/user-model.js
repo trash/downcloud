@@ -7,6 +7,7 @@ var Model = require('ampersand-model');
 var UserModel = Model.extend({
 	idAttribute: '_id',
 	props: {
+		accessToken: 'string',
 		soundcloudId: 'number',
 		'first_name': 'string',
 		'last_name': 'string',
