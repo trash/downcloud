@@ -71,8 +71,33 @@ function (
 			data: modifiedArtist
 		}).then(function (response) {
 			console.log('created a new artist');
-			deferred.resolve(response.data);
+			deferred.resolve();
+		}, function (response) {
+			deferred.reject(response);
 		});
+
+		return deferred.promise;
+	};
+
+	/**
+	 * Get the downloadable tracks for the given artist from soundcloud
+	 * and create a new artist in the database with those tracks
+	 */
+	this.fetchAndStoreTracks = function (artist) {
+		var deferred = $q.defer();
+
+		if (artist.tracks) {
+			return artist;
+		}
+
+		this.getDownloadableTracksForArtist(artist.id).then(function (tracks) {
+			console.log('tracks retrieved for new artist, creating new artist', tracks);
+			this.createNewArtist(artist, tracks).then(function () {
+				artist.tracks = tracks;
+				console.log('created new artist', artist);
+				deferred.resolve(artist);
+			});
+		}.bind(this));
 
 		return deferred.promise;
 	};
@@ -85,15 +110,9 @@ function (
 			method: 'GET'
 		}).then(function (response) {
 			deferred.resolve(response.data);
-		}, function () {
+		}, function (response) {
 			console.log('artist not found. lets get their tracks and create them');
-			this.getDownloadableTracksForArtist(artist.id).then(function (tracks) {
-				console.log('tracks retrieved for new artist, creating new artist', tracks);
-				this.createNewArtist(artist, tracks).then(function (artist) {
-					console.log('created new artist', artist);
-					deferred.resolve(artist);
-				});
-			}.bind(this));
+			deferred.reject(response);
 		}.bind(this));
 
 		return deferred.promise;
