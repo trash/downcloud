@@ -41,6 +41,20 @@ module.exports = function ($routeProvider) {
 	})
 
 	//
+	// Artist tracks page
+	//
+	.when('/artists/:artistId', {
+		templateUrl: 'partials/artist',
+		controller: 'ArtistCtrl',
+		authenticate: true,
+		resolve: {
+			artist: ['soundcloud', '$route', function (soundcloud, $route) {
+				return soundcloud.getTracksForArtist($route.current.params.artistId);
+			}]
+		}
+	})
+
+	//
 	// Settings
 	//
 	.when('/settings', {

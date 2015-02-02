@@ -1,5 +1,6 @@
 'use strict';
 
+var moment = require('moment');
 var angularRoutes = require('./angular-routes');
 
 angular.module('downcloudApp', [
@@ -57,4 +58,23 @@ function (
 }])
 .run(['$rootScope', 'alerts', function ($rootScope, alerts) {
 	$rootScope.alerts = alerts;
+}])
+.filter('duration', [function () {
+	return function (time) {
+		var totalSeconds = time / 1000,
+			minutes = Math.floor(totalSeconds / 60),
+			seconds = Math.floor(totalSeconds - 60 * minutes) + '';
+
+			if (seconds.length === 1) {
+				seconds = '0' + seconds;
+			}
+
+			return minutes + ':' + seconds;
+	};
+}])
+.filter('momentDate', [function () {
+	return function (time) {
+		time = new moment(time);
+		return time.format('MM/DD/YYYY');
+	};
 }]);

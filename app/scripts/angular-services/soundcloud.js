@@ -87,7 +87,9 @@ function (
 		var deferred = $q.defer();
 
 		if (artist.tracks) {
-			return artist;
+			setTimeout(function () {
+				deferred.resolve(artist);
+			}, 1);
 		}
 
 		this.getDownloadableTracksForArtist(artist.id).then(function (tracks) {
@@ -105,8 +107,10 @@ function (
 	this.getTracksForArtist = function (artist, options) {
 		var deferred = $q.defer();
 
+		var id = typeof artist === 'object' ? artist.id : artist;
+
 		$http({
-			url: '/api/artists/' + artist.id,
+			url: '/api/artists/' + id,
 			method: 'GET'
 		}).then(function (response) {
 			deferred.resolve(response.data);

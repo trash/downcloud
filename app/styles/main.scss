@@ -21,6 +21,32 @@ $soundcloudOrange: #FF5500;
 	}
 }
 
+.tracks-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+.tracks-list li {
+	padding: 0.5em;
+	margin: 0.5em 0;
+	border: 1px solid #eee;
+	background: #fafafa;
+	cursor: pointer;
+}
+
+.tracks-list i {
+	transition: all 350ms ease-in-out;
+	opacity: 0;
+}
+
+.tracks-list li:hover {
+	background: #A9E1FD;
+	i {
+		margin-right: 1em;
+		opacity: 1;
+	}
+}
+
 .soundcloud-button {
 	background: $soundcloudOrange;
 	color: #fff;
