@@ -1,8 +1,10 @@
-<div class="col-sm-12">
-	<h1>{{ artist.username }}'s Tracks</h1>
-	<ul class="tracks-list">
-		<li ng-click="downloadTrack(track)" ng-repeat="track in artist.tracks">
-			<i class="fa fa-download"></i> {{ track.title }} - [{{ track.duration | duration }}] <span class="pull-right">[{{ track.created_at | momentDate }}]</span>
-		</li>
-	</ul>
+<div class="row">
+	<div class="col-sm-12">
+		<h1>{{ artist.username }}'s Tracks</h1>
+		<ul class="tracks-list">
+			<li ng-click="downloadTrack(track)" ng-repeat="track in artist.tracks">
+				<i class="fa fa-download"></i> {{ track.title }} - [{{ track.duration | duration }}] <span class="pull-right">[{{ track.created_at | momentDate }}]</span>
+			</li>
+		</ul>
+	</div>
 </div>

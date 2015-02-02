@@ -1,8 +1,15 @@
-<div class="col-sm-12">
-	<h1>Artists</h1>
-	<ul>
-		<li ng-repeat="following in followings">
-			<a href="" ng-click="getTracks(following)">{{ following.username }}</a> - {{ following.tracks !== false ? following.tracks + ' tracks' : 'Not loaded' }}
-		</li>
-	</ul>
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Artists</h1>
+		<ul class="artists-list">
+			<li ng-repeat="following in followings">
+				<p class="">{{ following.username }}</p>
+				<button ng-click="getTracks(following)" ng-class="{'loaded': following.tracks !== false }" class="btn btn-sm pull-right">
+					<i class="fa"></i>
+					<span ng-show="following.tracks !== false">View Tracks ({{ following.tracks }})</span>
+					<span ng-show="following.tracks === false">Load Tracks</span>
+				</button>
+			</li>
+		</ul>
+	</div>
 </div>

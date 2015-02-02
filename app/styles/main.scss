@@ -21,17 +21,35 @@ $soundcloudOrange: #FF5500;
 	}
 }
 
-.tracks-list {
+.tracks-list, .artists-list {
 	padding-left: 0;
 	list-style: none;
 }
 
-.tracks-list li {
+.artists-list p {
+	display: inline-block;
+}
+
+.artists-list button {
+	background: #eee;
+	border-color: #ccc;
+
+	i {
+		@extend .fa-refresh;
+	}
+
+	&.loaded i {
+		@extend .fa-external-link;
+	}
+}
+
+.tracks-list li, .artists-list li {
 	padding: 0.5em;
 	margin: 0.5em 0;
 	border: 1px solid #eee;
 	background: #fafafa;
 	cursor: pointer;
+	overflow: hidden;
 }
 
 .tracks-list i {
