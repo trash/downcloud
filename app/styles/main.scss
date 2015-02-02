@@ -34,6 +34,10 @@ $soundcloudOrange: #FF5500;
 	background: #eee;
 	border-color: #ccc;
 
+	&:hover {
+		background: #fff;
+	}
+
 	i {
 		@extend .fa-refresh;
 	}
@@ -50,6 +54,14 @@ $soundcloudOrange: #FF5500;
 	background: #fafafa;
 	cursor: pointer;
 	overflow: hidden;
+}
+
+.artists-list li {
+	cursor: initial;
+}
+
+.artists-list li:hover {
+	border-color: #aaa;
 }
 
 .tracks-list i {
