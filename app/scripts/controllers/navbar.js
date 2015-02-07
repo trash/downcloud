@@ -9,7 +9,7 @@ function (
 	$scope.soundcloud = soundcloud;
 
 	$scope.menu = [{
-		title: 'Home',
+		title: 'Artists',
 		link: '/home',
 		mustBeLoggedIn: true,
 		partialMatching: true
