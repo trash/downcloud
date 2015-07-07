@@ -39,7 +39,7 @@ function (
 				SC.get('/me/followings', {
 					offset: currentOffset
 				}, function (followings) {
-					followingsLoaded = followingsLoaded.concat(followings.collection);
+					followingsLoaded = followingsLoaded.concat(followings);
 
 					console.log(followingsLoaded.length, total);
 					if (followingsLoaded.length >= total) {
